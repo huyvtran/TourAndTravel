@@ -1,0 +1,26 @@
+page-itenerary-builder {
+
+  .label-md[stacked] {
+    font-size: 1.9rem;
+  }
+
+ion-input, ion-textarea {
+     border-bottom: 1px solid gray;
+}
+
+  .datetime-text {
+    font-size: medium;
+  }
+
+  .alert-md .alert-title {
+    text-align: center;
+  }
+  
+  .modal-wrapper {
+    position: absolute;
+    top: calc(50% - (500px/2));
+    left: calc(50% - (500px/2));
+    width: 500px;
+    height: 500px;
+  }
+}

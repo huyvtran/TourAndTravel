@@ -1,0 +1,42 @@
+page-custome-package {
+    .content-bgn{
+        background: #008149;
+    }
+
+    ion-card {
+      position: relative;
+      text-align: center;
+    }
+  .button-clear-md:hover:not(.disable-hover) {
+      background-color: rgba(158, 158, 158, 1); 
+  }
+
+  .button-md:hover:not(.disable-hover) {
+       background-color: transparent; 
+  }
+
+
+    .toolbar-title{
+      text-align: right;
+            .button-inner{
+              font-size: large;
+            }
+
+            button-clear-md.activated {
+              background-color: rgba(158, 158, 158, 1);
+              box-shadow: none;
+          }
+          .button-clear-md .button-effect {
+          background-color:transparent;
+          }
+
+          .button-clear-md-dark.activated {
+              background-color: transparent;
+              box-shadow: none;
+            }
+      }
+      
+
+
+
+  }
