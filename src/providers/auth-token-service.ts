@@ -62,9 +62,8 @@ export class AuthService {
                     resolve(res.json());
                     let data2 = res.json();
                     let tokens = data2["access_token"];
-                    console.log(tokens);
-                      this.storeUserCredentials(tokens);
-                      //this.getUserInfo();
+                    //console.log(tokens);
+                    this.storeUserCredentials(tokens);
                      
                 }
             },(error=>{
@@ -112,7 +111,7 @@ export class AuthService {
     public getUserInfo() {     
             var headers = new Headers();
             this.loadUserCredentials();
-            console.log(this.AuthToken);
+            //console.log(this.AuthToken);
             headers.append('Authorization', 'Bearer ' +this.AuthToken);
             var myresult = new Promise(resolve => {
              this.http.get('http://cloud.basajans.com:8868/tripplannerdev/api/Account/UserInfo', {headers: headers})
@@ -127,8 +126,8 @@ export class AuthService {
                     resolve(data.json());
                     var result = data.json();
                     this.currentUser = new User(result["Username"], result["Email"]);
-                    console.log(this.currentUser);
-                    console.log(data.json());
+                    //console.log(this.currentUser);
+                    //console.log(data.json());
                     //this.storeUserCredentials(data.json().token);
                     //return res.json();
                     }

@@ -1,48 +1,71 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {LocationService} from '../../providers/location-service';
+import {IteneraryService} from '../../providers/itenerary-service';
+import { LocationPopoverComponent } from '../../components/location-popover/location-popover';
 
-/*
-  Generated class for the Destination page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-destination',
-  templateUrl: 'destination.html'
+  templateUrl: 'destination.html',
+  providers: [LocationService,LocationPopoverComponent, IteneraryService]
 })
 export class DestinationPage {
-  searchQuery: string = '';
-  items: string[];
+  //locations : Array< {Id: string, Name: string, ImageUrl: string, Country: string}>;
+  locations : any = {};
+  myKeys: String[];
+  //locationItem :LocationPopoverComponent;
+  constructor(public navCtrl: NavController, 
+  public navParams: NavParams, 
+  private locService: LocationService, 
+  private locationItem :LocationPopoverComponent,
+  private ite: IteneraryService
+  ) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.initializeItems();
   }
 
-  initializeItems() {
-    this.items = [
-      'Jakarta',
-      'Bali'
-    ];
-  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DestinationPage');
   }
 
-   getItems(ev: any) {
-    // Reset items back to all of the items
-    this.initializeItems();
-
-    // set val to the value of the searchbar
-    let val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
+  searchLocationDB(event, key) {
+      if(event.target.value.length != null){
+        if(event.target.value.length > 2) {
+            this.locService.searchLocation(event.target.value).subscribe(
+                data =>  {        
+                    console.log(data["Id"]) ;     
+                    if(data["Id"]!=null) { 
+                        var data1 = JSON.stringify({data});
+                        var data2 = JSON.stringify(data)
+                        console.log(data1);
+                        console.log(data2);
+                        this.locations= JSON.parse(data1);
+                        this.myKeys = Object.keys(this.locations);
+                     console.log(this.locations);
+                    }else{ 
+                    this.locations = data;
+                    this.myKeys = Object.keys(this.locations);
+                    console.log(this.locations);
+                    }
+                },
+                err => {
+                    console.log(err);
+                },
+                () => console.log('Movie Search Complete')
+            );
+        }
+      }
     }
-   }
+
+
+ 
+
+    setSelectedLocation(selectedItem) {
+     console.log(selectedItem);
+     this.locationItem.setLocation(selectedItem);
+     this.ite.setDestination(selectedItem);
+     this.navCtrl.pop();
+    
+  }
 
 }

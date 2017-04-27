@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
+import {AuthService} from '../providers/auth-token-service'
 import 'rxjs/add/operator/map';
 
 /*
@@ -11,19 +12,22 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class LocationService {
 
-  constructor(public http: Http) {
+  constructor(public http: Http, public auth:AuthService) {
     console.log('Hello LocationService Provider');
     this.http = http;
   }
 
 
   searchLocation(locationName) {
-        var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/cities?id='+encodeURI(locationName) ;
-        var response = this.http.get(url).map(res => res.json());
-        if (response==null){
-          var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/cities?id='+encodeURI(locationName) ;
-          var response = this.http.get(url).map(res => res.json());
-        }
+        var headers = new Headers();
+        let token = this.auth.AuthToken;
+        console.log(token);
+        headers.append('Authorization', 'Bearer ' +token);
+        var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/cities?id='+encodeURI(locationName); 
+        var response = this.http.get(url, {headers : headers}).map(res => res.json());
+        // var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/cities/';
+        // var response = this.http.get(url).map(res => res.json());
+        
         return response;
     }
 

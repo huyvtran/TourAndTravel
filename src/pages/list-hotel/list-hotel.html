@@ -16,76 +16,22 @@
 
 
 <ion-content padding>
+<h5>Show Result Hotels in Destination</h5>
 
-  <h5>Show Result in Destination</h5>
-<ion-card>
+
+<ion-card  *ngFor="let hotel of hotels"  (click)="hotelTapped($event)">
 <ion-row>
-  <ion-col><img src="http://www.college-hotel.com/client/cache/contenu/_500____college-hotelp1diapo1_718.jpg"/></ion-col>
+  <ion-col><img src="{{hotel.ImageUrl}}"/></ion-col>
   <ion-col width-60>
     <div >
-    <h2>Hotel XXXXXXXXXXXX</h2>
-    <h3>Rating: 5</h3>
-    <p style=" white-space: pre-wrap;">Address: Jl.Pegangsaan Timur No 1111111111156</p>
+    <h2>{{hotel.Name}}</h2>
+    <h3>Rating: {{hotel.AccommodationRatingName}}</h3>
+    <p style=" white-space: pre-wrap;">Address: {{hotel.Address}}</p>
     <br>
     <h3 style="float: right;">From IDR 120.000.000</h3>
     </div></ion-col>
 </ion-row>
 </ion-card>
 
-<ion-card>
-<ion-row>
-  <ion-col><img src="http://www.college-hotel.com/client/cache/contenu/_500____college-hotelp1diapo1_718.jpg"/></ion-col>
-  <ion-col width-60>
-    <div >
-    <h2>Hotel XXXXXXXXXXXX</h2>
-    <h3>Rating: 5</h3>
-    <p style=" white-space: pre-wrap;">Address: Jl.Pegangsaan Timur No 1111111111156</p>
-    <br>
-    <h3 style="float: right;">From IDR 120.000.000</h3>
-    </div></ion-col>
-</ion-row>
-</ion-card>
-
-<ion-card>
-<ion-row>
-  <ion-col><img src="http://www.college-hotel.com/client/cache/contenu/_500____college-hotelp1diapo1_718.jpg"/></ion-col>
-  <ion-col width-60>
-    <div >
-    <h2>Hotel XXXXXXXXXXXX</h2>
-    <h3>Rating: 5</h3>
-    <p style=" white-space: pre-wrap;">Address: Jl.Pegangsaan Timur No 1111111111156</p>
-    <br>
-    <h3 style="float: right;">From IDR 120.000.000</h3>
-    </div></ion-col>
-</ion-row>
-</ion-card>
-
-<ion-card>
-<ion-row>
-  <ion-col><img src="http://www.college-hotel.com/client/cache/contenu/_500____college-hotelp1diapo1_718.jpg"/></ion-col>
-  <ion-col width-60>
-    <div >
-    <h2>Hotel XXXXXXXXXXXX</h2>
-    <h3>Rating: 5</h3>
-    <p style=" white-space: pre-wrap;">Address: Jl.Pegangsaan Timur No 1111111111156</p>
-    <br>
-    <h3 style="float: right;">From IDR 120.000.000</h3>
-    </div></ion-col>
-</ion-row>
-</ion-card>
-
-<ion-card>
-<ion-row>
-  <ion-col><img src="http://www.college-hotel.com/client/cache/contenu/_500____college-hotelp1diapo1_718.jpg"/></ion-col>
-  <ion-col width-60>
-    <div >
-    <h2>Hotel XXXXXXXXXXXX</h2>
-    <h3>Rating: 5</h3>
-    <p style=" white-space: pre-wrap;">Address: Jl.Pegangsaan Timur No 1111111111156</p>
-    <br>
-    <h3 style="float: right;">From IDR 120.000.000</h3>
-    </div></ion-col>
-</ion-row>
-</ion-card>
 
 </ion-content>

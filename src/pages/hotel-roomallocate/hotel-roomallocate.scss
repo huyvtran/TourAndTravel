@@ -1,0 +1,15 @@
+page-hotel-roomallocate {
+    .vertical-align-content > *
+    {
+        display: flex!important;
+        align-content: center!important;
+        align-items: center!important;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0rem;
+    }
+    .text-input-md {
+    font-size: large;
+    }
+}

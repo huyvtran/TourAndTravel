@@ -1,27 +1,43 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import {IteneraryBuilderPage} from '../itenerary-builder/itenerary-builder'
-import { AuthService } from '../../providers/auth-token-service';
+import { IteneraryService } from '../../providers/itenerary-service';
 import { LocationPopoverComponent } from '../../components/location-popover/location-popover';
+//import { MyApp } from '../../app/app.component';
 
 @Component({
   selector: 'page-custome-package',
-  templateUrl: 'custome-package.html'
+  templateUrl: 'custome-package.html',
+   providers: [LocationPopoverComponent]
 })
 export class CustomePackagePage {
-  selectedLocation: string;
+  selectedLocation: any;
 
   constructor(
       public navCtrl: NavController, 
       public navParams: NavParams,  
-      private auth: AuthService, 
-      public popoverCtrl: PopoverController) {
-          this.selectedLocation = "Selected Destination";
+      private ite: IteneraryService, 
+      public popoverCtrl: PopoverController,
+      public locItem:LocationPopoverComponent,
+      ) {
+            this.selectedLocation = this.ite.destination;    
+          
       }
 
-  itineraryCusTapped(event) {
-    this.navCtrl.push(IteneraryBuilderPage);
-  }
+      ionViewDidLoad() {
+    }
+
+      ionViewWillEnter(){
+        if(this.ite.getDestination() != null){
+          this.selectedLocation = this.ite.getDestination(); 
+        }else{
+          this.selectedLocation = "Selected Destination";   
+        }   
+      }
+
+      itineraryCusTapped(event) {
+        this.navCtrl.push(IteneraryBuilderPage);
+      }
 
   locationPopover(ev){
       let popover = this.popoverCtrl.create(LocationPopoverComponent, {
@@ -31,41 +47,19 @@ export class CustomePackagePage {
     });
 
      popover.onDidDismiss((popoverData) => {
-      this.selectedLocation = popoverData;
+       if(popoverData != ""){
+         if(popoverData != undefined){
+          this.selectedLocation = popoverData;
+          this.ite.setDestination(popover);
+         }else{
+           this.selectedLocation = this.locItem.getLocation();
+         }
+      }else{
+          this.selectedLocation = this.locItem.getLocation();
+      }
     })
 
   }
-
-//     getinfo() {
-//       var test = this.auth.getUserInfo();
-//       console.log(test);
-//         this.auth.getUserInfo().then(data => {
-//         if(data) {
-//           console.log(data);
-//             var alert = this.alertCtrl.create({
-//                 title: data["Username"],
-//                 subTitle: data["HasRegistered"],
-//                 buttons: ['ok']
-//             });
-//             alert.present();
-//         }
-
-//     })
-//  }
-
-
-//   getUser(){
-//     let info = this.auth.userInfo();
-//     let username = info.username;
-//     let email = info.email;
-//     var alert = this.alertCtrl.create({
-//                   title: username,
-//                   subTitle: email,
-//                   buttons: ['ok']
-//               });
-//               alert.present();
-//   }
-
   
 
 }

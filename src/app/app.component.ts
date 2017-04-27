@@ -5,10 +5,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 //screen Page
 import { HomePage } from '../pages/home/home';
+import { MybookingPage } from '../pages/mybooking/mybooking';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { MovieListPage } from '../pages/movie-list/movie-list';
-// import { FilterHotelPage   } from '../pages/filter-hotel/filter-hotel';
+
+//import { HotelRoomallocatePage   } from '../pages/hotel-roomallocate/hotel-roomallocate';
 
 import { AuthService } from '../providers/auth-token-service';
 
@@ -17,6 +19,7 @@ import { AuthService } from '../providers/auth-token-service';
   selector: 'page-app',
   templateUrl: 'app.html'
 })
+
 @Injectable()
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -25,7 +28,9 @@ export class MyApp {
   rootPage: any = LoginPage;
   
   pages: Array<{title: string, component: any}>;
-  userInfo: Array<{username: string, email: string}>;
+  username;
+  email;
+  //userInfo: Array<{username: string, email: string}>;
 
   constructor(
     public platform: Platform,
@@ -40,13 +45,12 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Home', component: HomePage },
+      { title: 'My Booking', component: MybookingPage },
       { title: 'My First List', component: ListPage },
       { title: 'Movie List', component: MovieListPage },
       { title: 'Logout', component: this.logout() }  
     ];
   }
-
-
 
   initializeApp() {
       this.platform.ready().then(() => {
@@ -60,16 +64,16 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 
-  menuOpened(){
+  public menuOpened(){
     let info = this.auth.userInfo();
-    let username = info.username;
-    let email = info.email;
-    this.userInfo= [{username : username, email: email}];
-
+    this.username = info.username;
+    this.email = info.email;
   }
 
   public logout() {
         this.auth.logout();
+        this.username=null;
+        this.email=null;
         return LoginPage;
     }
 }

@@ -1,34 +1,47 @@
 
 import { Component } from '@angular/core';
-import {ViewController} from 'ionic-angular';
+import {ViewController, NavController} from 'ionic-angular';
+import { DestinationPage  } from '../../pages/destination/destination';
 
-/*
-  Generated class for the LocationPopover component.
 
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
-*/
+
 @Component({
   selector: 'location-popover',
   templateUrl: 'location-popover.html'
 })
 export class LocationPopoverComponent {
 
-  text: string;
-  locationList = [{Id: 'Denpasar'}, {Id: 'Jakarta'}, {Id: 'Bandung'}];
+  locationList = [{Id: 'Denpasar'}, {Id: 'Jakarta'}, {Id: 'Bandung'}, {Id: 'Choose Destination'}];
   selectedLocation: string;
+  selectedLocation2;
   
-  constructor(public viewCtrl: ViewController) {
-    // console.log('Hello LocationPopover Component');
-    // this.text = 'Hello World';
+  constructor(public viewCtrl: ViewController, public navCtrl: NavController) {
     this.selectedLocation = "";
+    this.selectedLocation2=null;
   }
 
 
-  setSelectedLocation(selectedItem) {
-    this.selectedLocation = selectedItem;
-    this.viewCtrl.dismiss(this.selectedLocation);
+  public setSelectedLocation(selectedItem) {
+    if(selectedItem != 'Choose Destination'){
+      this.selectedLocation = selectedItem;
+      this.viewCtrl.dismiss(this.selectedLocation);
+    }else{
+      this.navCtrl.push(DestinationPage);
+    }
   }
+
+   public setLocation(selectedItem) {
+      window.localStorage.setItem('loc', selectedItem);
+      this.selectedLocation2 = selectedItem;
+      this.viewCtrl.dismiss(this.selectedLocation2);
+       
+  }
+   public getLocation(){
+      var loc = window.localStorage.getItem('loc');
+      this.selectedLocation2 = loc;
+      return this.selectedLocation2; 
+   }
+
 
   sayHello() {
     alert("Hello World!");

@@ -1,29 +1,59 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, Platform,ViewController } from 'ionic-angular';
 
+import {IteneraryService} from '../../providers/itenerary-service';
 import {DestinationPage} from '../destination/destination';
 import {ListHotelPage} from '../list-hotel/list-hotel';
 import {FilterTransportPage} from '../filter-transport/filter-transport';
 import {ListAttractionPage} from '../list-attraction/list-attraction';
 import {InputTravellersPage} from '../input-travellers/input-travellers';
+import {ConfirmBookingPage} from '../confirm-booking/confirm-booking';
+
 @Component({
   selector: 'page-itenerary-builder',
-  templateUrl: 'itenerary-builder.html'
+  templateUrl: 'itenerary-builder.html',
+  providers: [IteneraryService]
 })
 export class IteneraryBuilderPage {
+toursname: string;
+destination:string;
+attraction: string;
+tranportation : string;
+acomodation : string;
 
 public event = {
-    monthStart: '1990-02-19',
-    monthEnd: '1990-02-19',
-    timeStarts: '07:43',
-    timeEnds: '1990-02-20'
+    monthStart: new Date().toISOString(),
+    monthEnd: new Date().toISOString()
 }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, 
+  public navParams: NavParams, 
+  public modalCtrl: ModalController,  
+  private ite: IteneraryService) {          
+    this.toursname= ''
+    this.destination = this.ite.getDestination();
+    this.attraction = '';
+    this.tranportation = '';
+    this.acomodation = '';
   }
 
-ionViewDidLoad() {
-    console.log('ionViewDidLoad IteneraryBuilderPage');
+  ionViewWillEnter() {
+    var att = this.ite.getAttraction();
+    var tName = this.ite.getToursName();
+    if(att != null){
+      this.attraction=att.attrac.Name;
+    }
+
+    if (tName !=null){
+      this.toursname=tName;
+    }
+
+  }
+
+
+  inputToursName(event){
+    var data = event.target.value;
+    this.ite.setToursName(data);
   }
 
     destinationTapped(event) {
@@ -41,11 +71,14 @@ ionViewDidLoad() {
     this.navCtrl.push(ListAttractionPage);
   }
 
+    createItenerary(event) {
+    this.navCtrl.push(ConfirmBookingPage);
+  }
   openModal() {
-
     let modal = this.modalCtrl.create(InputTravellersPage);
     modal.present();
-}
+  }
+
 
 
 

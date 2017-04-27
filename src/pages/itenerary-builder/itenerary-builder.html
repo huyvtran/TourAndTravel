@@ -10,11 +10,19 @@
 
 <ion-content padding>
   <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-label stacked>
+          <ion-icon ios="ios-briefcase" md="md-briefcase"></ion-icon> Tours Name</ion-label>
+          <ion-input type="text"  (input)="inputToursName($event)" [(ngModel)]="toursname" aria-placeholder="toursname"></ion-input>
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col>
         <ion-label stacked>
           <ion-icon ios="ios-plane" md="md-plane"></ion-icon> Destination</ion-label>
-          <ion-input type="text" (click)="destinationTapped($event)"></ion-input>
+          <ion-input type="text" [(ngModel)]="destination" aria-placeholder="destination" (click)="destinationTapped($event)"></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -24,75 +32,48 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-datetime style="border-bottom: 1px solid gray;" displayFormat="MMM DD YYYY" [(ngModel)]="event.monthStart"></ion-datetime>
+        <ion-datetime style="border-bottom: 1px solid gray;" displayFormat="DD MMM YYYY" [(ngModel)]="event.monthStart"></ion-datetime>
       </ion-col>
       <ion-col style="text-align:center" col-2>
         <ion-label stacked>To</ion-label>
       </ion-col>    
       <ion-col>
-        <ion-datetime style="border-bottom: 1px solid gray;" displayFormat="MMM DD YYYY" [(ngModel)]="event.monthEnd"></ion-datetime>
+        <ion-datetime style="border-bottom: 1px solid gray;" displayFormat="DD MMM YYYY" [(ngModel)]="event.monthEnd"></ion-datetime>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>
         <ion-label stacked><ion-icon ios="ios-people" md="md-people"></ion-icon> Passenger</ion-label>
-    <ion-input type="text" (click)="openModal()"></ion-input>
+    <ion-input type="text" ></ion-input>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>
         <ion-label stacked> <ion-icon ios="ios-cloudy-night" md="md-cloudy-night"></ion-icon> Acomodation</ion-label>
-    <ion-input type="text" (click)="hotelTapped($event)"></ion-input>
+    <ion-input type="text" [(ngModel)]="acomodation" aria-placeholder="acomodation" (click)="hotelTapped($event)"></ion-input>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>
         <ion-label stacked><ion-icon ios="ios-bus" md="md-bus"></ion-icon> Transportation</ion-label>
-    <ion-input type="text" (click)="transportTapped($event)"></ion-input>
+    <ion-input type="text"  [(ngModel)]="tranportation" aria-placeholder="tranportation" (click)="transportTapped($event)"></ion-input>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>
         <ion-label stacked> <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle"></ion-icon> Attraction</ion-label>
-    <ion-input type="text" (click)="attractionTapped($event)"></ion-input>
+    <ion-input type="text" [(ngModel)]="attraction" aria-placeholder="attraction" (click)="attractionTapped($event)"></ion-input>
       </ion-col>
     </ion-row>
-
   </ion-grid>
 </ion-content>
 
-
-<!--<script id="modal.html" type="text/ng-template">
-      <div class="modal" ng-controller="ModalCtrl">
-        <ion-header-bar class="bar bar-header bar-positive">
-          <h1 class="title">New Contact</h1>
-          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
-        </ion-header-bar>
-        <ion-content has-header="true" padding="true">
-          <div>
-            <p>
-              I want some paddin'
-            </p>
-            <div class="list">
-              <label class="item item-input">
-                <span class="input-label">First Name</span>
-                <input ng-model="newUser.firstName" type="text">
-              </label>
-              <label class="item item-input">
-                <span class="input-label">Last Name</span>
-                <input ng-model="newUser.lastName" type="text">
-              </label>
-              <label class="item item-input">
-                <span class="input-label">Email</span>
-                <input ng-model="newUser.email" type="text">
-              </label>
-              <button class="button button-full button-positive" ng-click="createContact()">Create</button>
-            </div>
-          </div>
-        </ion-content>
-      </div>
-    </script>-->
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button (click)="createItenerary($event)"  full>Start</button>
+  </ion-toolbar>
+</ion-footer>

@@ -7,21 +7,20 @@
 <ion-header>
   <ion-navbar>
     <button menuToggle *ngIf="!selectedItem">
-      <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Choose Destination</ion-title>
   </ion-navbar>
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-searchbar placeholder="Search a location..." (ionInput)="searchLocationDB($event, searchKey)"></ion-searchbar>
 </ion-header>
 
 
 
 <ion-content padding>
 <ion-list>
-  <ion-item *ngFor="let item of items">
-    <h1>{{ item }}</h1>
+  <ion-item *ngFor="let keys of myKeys" (click)="setSelectedLocation(locations[keys].Id)">
+    <h1>{{ locations[keys].Name }}</h1>
     <br>
-    <h4>Indonesia</h4>
+    <h4>{{ locations[keys].Country }}</h4>
   </ion-item>
 </ion-list>
 </ion-content>
