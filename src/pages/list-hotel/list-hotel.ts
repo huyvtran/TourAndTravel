@@ -29,9 +29,10 @@ export class ListHotelPage {
 
   ionViewWillEnter() {
     this.aco.searchListAcomodation().subscribe(data=>{
-            this.listhotels=data;
-            this.hotels=this.listhotels;
-            console.log(this.listhotels);
+                this.listhotels=data;
+                this.hotels=this.listhotels;
+                console.log(this.listhotels);
+          
             },err => {
                     console.log(err);
                 },

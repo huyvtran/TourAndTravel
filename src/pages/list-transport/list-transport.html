@@ -18,30 +18,15 @@
 
 
 <ion-content padding>
-
-   <h5>Show Result</h5>
-<ion-card>
+<h5>Show Result</h5>
+<ion-card *ngFor="let trans of transport" (click)="setSelectedTransport(trans)">
 <ion-row>
-  <ion-col><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSiNslpWc4j9dWivyi_M72IjTfDxafBVznpp1nuyFgbGlh4C_E2_t92jvo"/></ion-col>
+  <ion-col><img src="{{trans.ImageUrl}}"/></ion-col>
   <ion-col width-60>
-    <div >
-    <h2>Mobil XXXXXXXXXXXX</h2>
+    <div>
+    <h2>{{trans.Name}}</h2>
     <h3>Seater: 7</h3>
-    <h3>Rating: 5</h3>
-    <p style=" white-space: pre-wrap;">Review: Good</p>
-    <br>
-    <h3 style="float: right;">From IDR 12.000.000</h3>
-    </div></ion-col>
-</ion-row>
-</ion-card>
-<ion-card>
-<ion-row>
-  <ion-col><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSiNslpWc4j9dWivyi_M72IjTfDxafBVznpp1nuyFgbGlh4C_E2_t92jvo"/></ion-col>
-  <ion-col width-60>
-    <div >
-    <h2>Mobil XXXXXXXXXXXX</h2>
-    <h3>Seater: 7</h3>
-    <h3>Rating: 5</h3>
+    <h3>Rating: {{trans.TransportationRatingId}}</h3>
     <p style=" white-space: pre-wrap;">Review: Good</p>
     <br>
     <h3 style="float: right;">From IDR 12.000.000</h3>
@@ -49,63 +34,4 @@
 </ion-row>
 </ion-card>
 
-<ion-card>
-<ion-row>
-  <ion-col><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSiNslpWc4j9dWivyi_M72IjTfDxafBVznpp1nuyFgbGlh4C_E2_t92jvo"/></ion-col>
-  <ion-col width-60>
-    <div >
-    <h2>Mobil XXXXXXXXXXXX</h2>
-    <h3>Seater: 7</h3>
-    <h3>Rating: 5</h3>
-    <p style=" white-space: pre-wrap;">Review: Good</p>
-    <br>
-    <h3 style="float: right;">From IDR 12.000.000</h3>
-    </div></ion-col>
-</ion-row>
-</ion-card>
-
-<ion-card>
-<ion-row>
-  <ion-col><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSiNslpWc4j9dWivyi_M72IjTfDxafBVznpp1nuyFgbGlh4C_E2_t92jvo"/></ion-col>
-  <ion-col width-60>
-    <div >
-    <h2>Mobil XXXXXXXXXXXX</h2>
-    <h3>Seater: 7</h3>
-    <h3>Rating: 5</h3>
-    <p style=" white-space: pre-wrap;">Review: Good</p>
-    <br>
-    <h3 style="float: right;">From IDR 12.000.000</h3>
-    </div></ion-col>
-</ion-row>
-</ion-card>
-
-<ion-card>
-<ion-row>
-  <ion-col><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSiNslpWc4j9dWivyi_M72IjTfDxafBVznpp1nuyFgbGlh4C_E2_t92jvo"/></ion-col>
-  <ion-col width-60>
-    <div >
-    <h2>Mobil XXXXXXXXXXXX</h2>
-    <h3>Seater: 7</h3>
-    <h3>Rating: 5</h3>
-    <p style=" white-space: pre-wrap;">Review: Good</p>
-    <br>
-    <h3 style="float: right;">From IDR 12.000.000</h3>
-    </div></ion-col>
-</ion-row>
-</ion-card>
-
-<ion-card>
-<ion-row>
-  <ion-col><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSiNslpWc4j9dWivyi_M72IjTfDxafBVznpp1nuyFgbGlh4C_E2_t92jvo"/></ion-col>
-  <ion-col width-60>
-    <div >
-    <h2>Mobil XXXXXXXXXXXX</h2>
-    <h3>Seater: 7</h3>
-    <h3>Rating: 5</h3>
-    <p style=" white-space: pre-wrap;">Review: Good</p>
-    <br>
-    <h3 style="float: right;">From IDR 12.000.000</h3>
-    </div></ion-col>
-</ion-row>
-</ion-card>
 </ion-content>

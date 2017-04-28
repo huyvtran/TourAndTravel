@@ -30,7 +30,7 @@ export class FilacomodationService {
         let token = this.auth.AuthToken;
         console.log(token);
         headers.append('Authorization', 'Bearer ' +token);
-        var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/AccommodationProfiles/ByCity?city=' +des; 
+        var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/Areas/ByCity?cityId=' +des; 
         var response = this.http.get(url, {headers : headers}).map(res => res.json());        
         return response;
     }

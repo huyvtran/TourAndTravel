@@ -16,20 +16,8 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <button ion-button icon-right outline color="dark">1 <ion-icon name="star"></ion-icon></button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-right outline  color="dark">2 <ion-icon name="star"></ion-icon></button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-right outline  color="dark">3 <ion-icon name="star"></ion-icon></button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-right outline  color="dark">4 <ion-icon name="star"></ion-icon></button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-right outline  color="dark">5 <ion-icon name="star"></ion-icon></button>
+      <ion-col *ngFor="let rat of listRatings" >
+        <button ion-button icon-right outline color="dark">{{rat.Id}}<ion-icon name="star"></ion-icon></button>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -38,22 +26,8 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <button ion-button block outline color="dark">Jakarta Utara</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Jakarta Selatan</button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <button ion-button block outline color="dark">Jakarta Timur</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Jakarta Barat</button>
-      </ion-col>
-      <ion-col >
-        <button ion-button block outline color="dark">Jakarta Pusat</button>
+      <ion-col *ngFor="let area of listAreas" >
+        <button ion-button block outline color="dark">{{area.Name}}</button>
       </ion-col>
     </ion-row>
 
@@ -63,14 +37,8 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <button ion-button block outline color="dark">City</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Beach</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Mountain</button>
+      <ion-col *ngFor="let location of listLocations" >
+        <button ion-button block outline color="dark">{{location.Name}}</button>
       </ion-col>
     </ion-row>
 
@@ -80,21 +48,10 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <button ion-button block outline color="dark">Hotel</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Hostel</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Guest House</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Resort</button>
+      <ion-col *ngFor="let type of listTypes">
+        <button ion-button block outline color="dark">{{type.Name}}</button>
       </ion-col>
     </ion-row>
-
-
 
     <ion-row>
       <ion-col>
@@ -102,21 +59,10 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <button ion-button block outline color="dark">Swimming Pool</button>
+      <ion-col *ngFor="let fac of listFacilities">
+        <button ion-button block outline color="dark">{{fac.Name}}</button>
       </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Restaurant</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Wi-fi</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Kids Grounds</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Night Life</button>
-      </ion-col>
+      
     </ion-row>
 
      <ion-row>
@@ -138,9 +84,12 @@
         <button ion-button block outline color="dark">FIT</button>
       </ion-col>
     </ion-row>
-
-
   </ion-grid>
-
-<button ion-button full (click)="listTapped($event)">Go to List</button>
 </ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button (click)="listTapped($event)"  full>Go to List</button>
+  </ion-toolbar>
+</ion-footer>

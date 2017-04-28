@@ -65,7 +65,7 @@ export class IteneraryService {
 
      public getTransport() {
         var trans = JSON.parse(window.localStorage.getItem('trans'));
-        this.attraction=trans;
+        this.transportation=trans;
         return this.transportation;
     }
 

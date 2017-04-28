@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http,Headers } from '@angular/http';
+//import {AuthService} from '../providers/auth-token-service'
+//import {IteneraryService} from '../providers/itenerary-service'
 import 'rxjs/add/operator/map';
 
 /*

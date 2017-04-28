@@ -39,13 +39,17 @@ public event = {
 
   ionViewWillEnter() {
     var att = this.ite.getAttraction();
-    var tName = this.ite.getToursName();
+    var tourName = this.ite.getToursName();
+    var transportName = this.ite.getTransport();
     if(att != null){
       this.attraction=att.attrac.Name;
     }
 
-    if (tName !=null){
-      this.toursname=tName;
+    if (tourName !=null){
+      this.toursname=tourName;
+    }
+     if(transportName != null){
+      this.tranportation=transportName.trans.Name;
     }
 
   }
