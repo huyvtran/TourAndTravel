@@ -23,5 +23,17 @@ export class AcomodationService {
         return response;
     }
 
+    searchListItemAcomodation(){
+        var headers = new Headers();
+        let token = this.auth.AuthToken;
+        let id = this.ite.getAcomodation();
+        console.log(token);
+        headers.append('Authorization', 'Bearer ' +token);
+        var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/AccommodationItems/byprofile?profileid='+id.hot.Id; 
+        var response = this.http.get(url, {headers : headers}).map(res => res.json());        
+        return response;
+    }
+
+
 
 }

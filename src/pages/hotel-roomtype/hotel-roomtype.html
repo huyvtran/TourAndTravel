@@ -15,56 +15,15 @@
 <ion-content padding>
   <h5>Pick your room type</h5>
 
-  <ion-card (click)="roomalloTapped($event)">
+  <ion-card *ngFor="let itemroom of listroomtypes" (click)="setSelectedRoomAllo(itemroom)">
 <ion-row>
   <ion-col><img src="http://www.college-hotel.com/client/cache/contenu/_500____college-hotelp1diapo1_718.jpg"/></ion-col>
   <ion-col width-60>
     <div >
-    <h2>Superior Singgle/Twin Bed</h2>
-    <h3>Explanation: 5</h3>
-    <p style=" white-space: pre-wrap;">Facilities: </p>
-    <br>
-    <h3 style="float: right;">From IDR 120.000.000</h3>
-    </div></ion-col>
-</ion-row>
-</ion-card>
-
-<ion-card>
-<ion-row>
-  <ion-col><img src="http://www.college-hotel.com/client/cache/contenu/_500____college-hotelp1diapo1_718.jpg"/></ion-col>
-  <ion-col width-60>
-    <div >
-    <h2>Superior Singgle/Twin Bed</h2>
-     <h3>Explanation: 5</h3>
-    <p style=" white-space: pre-wrap;">Facilities: </p>
-    <br>
-    <h3 style="float: right;">From IDR 120.000.000</h3>
-    </div></ion-col>
-</ion-row>
-</ion-card>
-
-<ion-card>
-<ion-row>
-  <ion-col><img src="http://www.college-hotel.com/client/cache/contenu/_500____college-hotelp1diapo1_718.jpg"/></ion-col>
-  <ion-col width-60>
-    <div >
-    <h2>Deluxe Double Double Bed</h2>
-     <h3>Explanation: 5</h3>
-    <p style=" white-space: pre-wrap;">Facilities: </p>
-    <br>
-    <h3 style="float: right;">From IDR 120.000.000</h3>
-    </div></ion-col>
-</ion-row>
-</ion-card>
-
-<ion-card>
-<ion-row>
-  <ion-col><img src="http://www.college-hotel.com/client/cache/contenu/_500____college-hotelp1diapo1_718.jpg"/></ion-col>
-  <ion-col width-60>
-    <div >
-    <h2>Suite</h2>
-     <h3>Explanation: 5</h3>
-    <p style=" white-space: pre-wrap;">Facilities: </p>
+    <h2>{{itemroom.AccommodationItemTypeName}}</h2>
+    <h3>Explanation: {{itemroom.Desc}}</h3>
+    <p style=" white-space: pre-wrap;" >Facilities: <span *ngFor="let facilities of itemroom.SimpleAccommodationItemFacilities">{{facilities.AccommodationFacilityName}} </span></p>
+    
     <br>
     <h3 style="float: right;">From IDR 120.000.000</h3>
     </div></ion-col>

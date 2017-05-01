@@ -8,7 +8,7 @@
   <ion-navbar>
     <ion-title>Choose Hotel</ion-title>
   </ion-navbar>
-  <ion-row center style="text-align:center" >
+  <ion-row center style="text-align:center; background:#008149" >
     <ion-col (click)="filterhotelTapped($event)"><ion-icon ios="ios-funnel" md="md-funnel">  Filter</ion-icon> </ion-col>
     <ion-col width-60><ion-searchbar (ionInput)="getItems($event)"></ion-searchbar></ion-col>
   </ion-row>
@@ -19,7 +19,7 @@
 <h5>Show Result Hotels in Destination</h5>
 
 
-<ion-card  *ngFor="let hotel of hotels"  (click)="hotelTapped($event)">
+<ion-card  *ngFor="let hotel of hotels"  (click)="setSelectedHotel(hotel)">
 <ion-row>
   <ion-col><img src="{{hotel.ImageUrl}}"/></ion-col>
   <ion-col width-60>

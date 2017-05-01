@@ -19,8 +19,10 @@ export class FilterTransportPage {
     console.log('ionViewDidLoad FilterTransportPage');
   }
 
-       listTapped(event) {
+    listTapped(event) {
+    this.navCtrl.pop();
     this.navCtrl.push(ListTransportPage);
+    
   }
 
 }

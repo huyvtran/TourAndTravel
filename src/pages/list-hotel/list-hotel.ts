@@ -70,8 +70,9 @@ export class ListHotelPage {
      console.log(hot);
      var data = JSON.stringify({hot});
      console.log(data);
-     this.ite.setAttraction(data);
+     this.ite.setAcomodation(data);
      this.navCtrl.pop();
+     this.navCtrl.push(HotelRoomtypePage);
     }
 
 

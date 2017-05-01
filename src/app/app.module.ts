@@ -21,9 +21,11 @@ import { ListHotelPage  } from '../pages/list-hotel/list-hotel';
 import { FilterHotelPage   } from '../pages/filter-hotel/filter-hotel';
 import { HotelRoomtypePage  } from '../pages/hotel-roomtype/hotel-roomtype';
 import { HotelRoomallocatePage   } from '../pages/hotel-roomallocate/hotel-roomallocate';
+import { HotelRoomservicePage   } from '../pages/hotel-roomservice/hotel-roomservice';
 //transport
 import { ListTransportPage  } from '../pages/list-transport/list-transport';
 import { FilterTransportPage   } from '../pages/filter-transport/filter-transport';
+import {  TransportAirportservicePage  } from '../pages/transport-airportservice/transport-airportservice';
 
 import { ListAttractionPage  } from '../pages/list-attraction/list-attraction';
 import {InputTravellersPage} from '../pages/input-travellers/input-travellers';
@@ -46,7 +48,7 @@ import { FilacomodationService } from '../providers/filacomodation-service';
 import { FiltransportService } from '../providers/filtransport-service';
 import { LocationService } from '../providers/location-service';
 import { TransportService } from '../providers/transport-service';
-
+import { TransactionService  } from '../providers/transaction-service';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -72,12 +74,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ListHotelPage,
     HotelRoomallocatePage,
     HotelRoomtypePage,
-
+    FilterHotelPage,
+    HotelRoomservicePage,
 
     ListTransportPage,
+    TransportAirportservicePage,
     ListAttractionPage,
     FilterTransportPage,
-    FilterHotelPage,
+    
     InputTravellersPage,
 
     //result
@@ -113,8 +117,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ListHotelPage,
     HotelRoomallocatePage,
     HotelRoomtypePage,
+    HotelRoomservicePage,
 
     ListTransportPage,
+    TransportAirportservicePage,
     ListAttractionPage,
     FilterHotelPage,
     FilterTransportPage,
@@ -141,7 +147,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TransportService,
     FilacomodationService,
     FiltransportService,
-    LocationService
+    LocationService,
+    TransactionService
   ]
 })
 export class AppModule {}

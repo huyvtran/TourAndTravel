@@ -17,6 +17,9 @@ export class IteneraryService {
     transportation;
     attraction: any = {};
 
+    roomtype;
+    roomallocate;
+
   constructor(public http: Http) {
     this.toursname;
     this.destination="Selected Destination";
@@ -24,6 +27,9 @@ export class IteneraryService {
     this.acomodation=null;
     this.transportation=null;
     this.attraction=null;
+
+    this.roomtype=null;
+    this.roomallocate=null;
   }
    public setToursName(name) {
         window.localStorage.setItem('tName', name);
@@ -80,5 +86,29 @@ export class IteneraryService {
         this.acomodation=hot;
         return this.acomodation;
     }
+
+     public setRoomType(room) {
+        window.localStorage.setItem('room', room);
+        this.roomtype=room;
+    }
+    
+     public getRoomType() {
+        var room = JSON.parse(window.localStorage.getItem('room'));
+        this.roomtype=room;
+        return this.roomtype;
+    }
+
+    public setRoomAllo(aloc) {
+        window.localStorage.setItem('aloc', aloc);
+        this.roomallocate=aloc;
+    }
+    
+     public getRoomAllo() {
+        var aloc = JSON.parse(window.localStorage.getItem('aloc'));
+        this.roomallocate=aloc;
+        return this.roomallocate;
+    }
+
+
 
 }

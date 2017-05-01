@@ -1,26 +1,46 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {HotelRoomallocatePage} from '../hotel-roomallocate/hotel-roomallocate';
-/*
-  Generated class for the HotelRoomtype page.
+import {HotelRoomservicePage} from '../hotel-roomservice/hotel-roomservice';
+import {AcomodationService} from '../../providers/acomodation-service';
+import {IteneraryService} from '../../providers/itenerary-service';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-hotel-roomtype',
-  templateUrl: 'hotel-roomtype.html'
+  templateUrl: 'hotel-roomtype.html',
+  providers: [AcomodationService,IteneraryService]
 })
 export class HotelRoomtypePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  listroomtypes:Array<any>;
+
+  constructor(public navCtrl: NavController, 
+  public navParams: NavParams,
+  public ite : IteneraryService,
+  public aco : AcomodationService
+  ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HotelRoomtypePage');
   }
 
-roomalloTapped(event) {
-    this.navCtrl.push(HotelRoomallocatePage);
+    ionViewWillEnter() {
+    this.aco.searchListItemAcomodation().subscribe(data=>{
+                this.listroomtypes=data;
+                console.log(this.listroomtypes);
+            },err => {
+                    console.log(err);
+                },
+                () => console.log('Room Type Search Complete')
+            );
+  }
+
+  setSelectedRoomAllo(itemroom) {
+     console.log(itemroom);
+     var data = JSON.stringify({itemroom});
+     console.log(data);
+     this.ite.setRoomType(data);
+     this.navCtrl.pop();
+     this.navCtrl.push(HotelRoomservicePage);
   }
   
 }

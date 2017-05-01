@@ -41,6 +41,7 @@ public event = {
     var att = this.ite.getAttraction();
     var tourName = this.ite.getToursName();
     var transportName = this.ite.getTransport();
+    var acomodationName =  this.ite.getAcomodation();
     if(att != null){
       this.attraction=att.attrac.Name;
     }
@@ -50,6 +51,10 @@ public event = {
     }
      if(transportName != null){
       this.tranportation=transportName.trans.Name;
+    }
+
+     if(acomodationName != null){
+      this.acomodation=acomodationName.hot.Name;
     }
 
   }

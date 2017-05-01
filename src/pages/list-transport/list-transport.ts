@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {FilterTransportPage} from '../filter-transport/filter-transport';
+import {TransportAirportservicePage} from '../transport-airportservice/transport-airportservice';
 import {TransportService} from '../../providers/transport-service';
 import {IteneraryService} from '../../providers/itenerary-service';
 
@@ -65,7 +66,7 @@ getItems(searchbar) {
      var data = JSON.stringify({trans});
      console.log(data);
      this.ite.setTransport(data);
-     this.navCtrl.pop();
+     this.navCtrl.push(TransportAirportservicePage);
     }
 
      filtertransTapped(event) {
