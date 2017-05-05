@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {ListHotelPage} from '../list-hotel/list-hotel';
+//import {ListHotelPage} from '../list-hotel/list-hotel';
 import {FilacomodationService} from '../../providers/filacomodation-service';
 
 /*
@@ -36,7 +36,7 @@ export class FilterHotelPage {
 
 
      listTapped(event) {
-    this.navCtrl.push(ListHotelPage);
+    this.navCtrl.pop();
   }
 
 

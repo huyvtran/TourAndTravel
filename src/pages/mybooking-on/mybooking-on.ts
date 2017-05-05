@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { HistoryService} from '../../providers/history-service';
 
 /*
   Generated class for the MybookingOn page.
@@ -13,10 +14,23 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MybookingOnPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  HistoryBookingOpen: Array<any>;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public his: HistoryService) {
+    this.HistoryBookingOpen= null;
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MybookingOnPage');
+  }
+
+  ionViewWillEnter() {
+    this.his.getHistoryTransactions().subscribe(data=>{
+            this.HistoryBookingOpen= data;
+            },err => {
+                    console.log(err);
+                },
+                () => console.log('Get History Transaction Complete')
+            );
   }
 
 }

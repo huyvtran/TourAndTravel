@@ -20,4 +20,14 @@ export class TransportService {
         return response;
     }
 
+    listTransportbyFilter(){
+        var headers = new Headers();
+        let token = this.auth.AuthToken;
+        headers.append('Authorization', 'Bearer ' +token);
+        var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/TransportationUnits/GetTransportationUnit?ratingId=3&seatTypeId=1&typeId=1&servicetypeid=1'; 
+        var response = this.http.get(url, {headers : headers}).map(res => res.json());        
+        return response;
+
+    }
+
 }

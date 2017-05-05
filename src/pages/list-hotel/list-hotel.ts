@@ -71,7 +71,6 @@ export class ListHotelPage {
      var data = JSON.stringify({hot});
      console.log(data);
      this.ite.setAcomodation(data);
-     this.navCtrl.pop();
      this.navCtrl.push(HotelRoomtypePage);
     }
 

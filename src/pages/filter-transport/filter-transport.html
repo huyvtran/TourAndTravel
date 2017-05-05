@@ -16,45 +16,27 @@
 <ion-content padding>
 
   <ion-grid style="text-align:center">
+    
     <ion-row>
       <ion-col>
         <h3>Rating</h3>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <button ion-button block outline color="dark">Regular</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Premium</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Luxury</button>
+      <ion-col *ngFor="let rat of listRatings">
+         <a ion-button block color="dark" [outline]="inClass" (click)="filterrating(rat.Id)">{{rat.Name}}</a>
       </ion-col>
     </ion-row>
+
+
     <ion-row>
       <ion-col>
         <h3>Type</h3>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <button ion-button block outline color="dark">Sedan</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">SUV</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Mini Van</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Bus</button>
-      </ion-col>
-      <ion-col >
-        <button ion-button block outline color="dark">Mini Bus</button>
-      </ion-col>
-      <ion-col >
-        <button ion-button block outline color="dark">MotorCycle</button>
+      <ion-col *ngFor="let type of listTypes">
+        <button ion-button block outline color="dark">{{type.Name}}</button>
       </ion-col>
     </ion-row>
 
@@ -64,40 +46,51 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <button ion-button block outline color="dark">4 Seater</button>
+      <ion-col *ngFor="let seat of listSeats">
+        <button ion-button block outline color="dark">{{seat.Name}} Seater</button>
       </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">7 Seater</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">10 Seater</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">15 Seater</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">25 Seater</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">40 Seater</button>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <h3>Airport Service</h3>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <button ion-button block outline color="dark">Pick Up</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button block outline color="dark">Drop-Off</button>
-      </ion-col>     
     </ion-row>
   </ion-grid>
+
+<!--<div class="btn-group" data-toggle="buttons">
+  <label class="btn btn-primary active">
+    <input type="checkbox" checked> Option 1 (pre-checked)
+  </label>
+  <label class="btn btn-primary">
+    <input type="checkbox"> Option 2
+  </label>
+  <label class="btn btn-primary">
+    <input type="checkbox"> Option 3
+  </label>
+</div>
+
+
+        <ion-row>
+            <ion-col ion-item>
+              <ion-label>item</ion-label>
+              <ion-checkbox></ion-checkbox>
+            </ion-col>
+             <ion-col ion-item>
+              <ion-label>item</ion-label>
+              <ion-checkbox></ion-checkbox>
+            </ion-col>
+             <ion-col ion-item>
+              <ion-label>item</ion-label>
+              <ion-checkbox></ion-checkbox>
+            </ion-col>
+              <ion-col ion-item>
+              <ion-label>item</ion-label>
+              <ion-checkbox></ion-checkbox>
+            </ion-col>
+              <ion-col ion-item>
+              <ion-label>item</ion-label>
+              <ion-checkbox></ion-checkbox>
+            </ion-col>
+              <ion-col ion-item>
+              <ion-checkbox><ion-label>item</ion-label></ion-checkbox>
+            </ion-col>
+          </ion-row>-->
+
 </ion-content>
 
 <ion-footer>

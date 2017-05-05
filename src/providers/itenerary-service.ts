@@ -16,9 +16,11 @@ export class IteneraryService {
     acomodation;
     transportation;
     attraction: any = {};
-
+    datetour;
     roomtype;
     roomallocate;
+    roomservice;
+    transportservice;
 
   constructor(public http: Http) {
     this.toursname;
@@ -27,10 +29,50 @@ export class IteneraryService {
     this.acomodation=null;
     this.transportation=null;
     this.attraction=null;
+    this.datetour=null;
 
     this.roomtype=null;
     this.roomallocate=null;
+    this.roomservice=null;
+    this.transportservice=null;
+
   }
+   public setTransportSer(tSer) {
+        window.localStorage.setItem('tSer', tSer);
+        this.transportservice=tSer;
+    }
+    
+     public getTransportSer() {
+        var tSer = JSON.parse(window.localStorage.getItem('tSer'));
+        this.transportservice=tSer;
+        return this.transportservice;
+    }
+
+
+  public setDateTour(datetour) {
+        window.localStorage.setItem('date', datetour);
+        this.datetour=datetour;
+    }
+    
+     public getDateTour() {
+        var datetour = JSON.parse(window.localStorage.getItem('date'));
+        this.datetour=datetour;
+        return this.datetour;
+    }
+
+
+  public setPassenger(guest) {
+        window.localStorage.setItem('guest', guest);
+        this.passengger=guest;
+    }
+    
+     public getPassenger() {
+        var guest = JSON.parse(window.localStorage.getItem('guest'));
+        this.passengger=guest;
+        return this.passengger;
+    }
+
+
    public setToursName(name) {
         window.localStorage.setItem('tName', name);
         this.toursname=name;
@@ -109,6 +151,16 @@ export class IteneraryService {
         return this.roomallocate;
     }
 
+     public setRoomSer(ser) {
+        window.localStorage.setItem('ser', ser);
+        this.roomservice=ser;
+    }
+    
+     public getRoomSer() {
+        var ser = JSON.parse(window.localStorage.getItem('ser'));
+        this.roomservice=ser;
+        return this.roomservice;
+    }
 
 
 }

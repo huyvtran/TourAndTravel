@@ -18,14 +18,11 @@ export class CustomePackagePage {
       public navParams: NavParams,  
       private ite: IteneraryService, 
       public popoverCtrl: PopoverController,
-      public locItem:LocationPopoverComponent,
       ) {
             this.selectedLocation = this.ite.destination;    
           
       }
 
-      ionViewDidLoad() {
-    }
 
       ionViewWillEnter(){
         if(this.ite.getDestination() != null){
@@ -50,12 +47,12 @@ export class CustomePackagePage {
        if(popoverData != ""){
          if(popoverData != undefined){
           this.selectedLocation = popoverData;
-          this.ite.setDestination(popover);
+          //this.ite.setDestination(popover);
          }else{
-           this.selectedLocation = this.locItem.getLocation();
+           this.selectedLocation = this.ite.getDestination();
          }
       }else{
-          this.selectedLocation = this.locItem.getLocation();
+          this.selectedLocation = this.ite.getDestination();
       }
     })
 

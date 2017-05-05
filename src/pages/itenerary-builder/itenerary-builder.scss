@@ -27,6 +27,9 @@ page-itenerary-builder {
     color: black;
     font-size: large;
 }
+.text-input[disabled] {
+    opacity: 1;
+}
 
 
     ion-input, ion-textarea {

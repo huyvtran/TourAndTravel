@@ -76,7 +76,7 @@ export class AuthService {
 
     public register(credentials) {
         var json1 = {"Username": credentials.email ,
-                "Password": credentials.password,
+                "Password   ": credentials.password,
                 "ConfirmPassword": credentials.password};
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
@@ -90,8 +90,6 @@ export class AuthService {
                       var testResult = data.json();
                       console.log(testResult.Message);
                       resolve(false);
-                      
-
                       //return res.json();
                 } else {
                     resolve(true);

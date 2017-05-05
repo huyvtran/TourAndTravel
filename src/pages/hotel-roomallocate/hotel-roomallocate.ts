@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import {IteneraryBuilderPage} from '../itenerary-builder/itenerary-builder';
+import { NavController, NavParams,ViewController } from 'ionic-angular';
+//import {IteneraryBuilderPage} from '../itenerary-builder/itenerary-builder';
 import {IteneraryService} from '../../providers/itenerary-service';
 
 /*
@@ -19,7 +19,8 @@ export class HotelRoomallocatePage {
 
   constructor(public navCtrl: NavController, 
   public navParams: NavParams,
-  public ite : IteneraryService
+  public ite : IteneraryService,
+  private viewCtrl: ViewController
   
   ) {
   this.allocRoom = { sharingRooms: 0, singleRoom: 0, extraBed: 0, sharingBed:0 };
@@ -33,8 +34,14 @@ export class HotelRoomallocatePage {
       console.log(allocroom);
       var data = JSON.stringify({allocroom});
       this.ite.setRoomAllo(data);
-      this.navCtrl.pop();
-      this.navCtrl.push(IteneraryBuilderPage);
+      this.navCtrl.pop().then(() => {
+        // first we find the index of the current view controller:
+        const index = this.viewCtrl.index;
+        // then we remove it from the navigation stack
+        this.navCtrl.remove(index);
+        this.navCtrl.remove(index-1);
+        this.navCtrl.remove(index-2);
+      });
   }
 
 }

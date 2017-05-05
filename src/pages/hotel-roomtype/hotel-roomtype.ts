@@ -39,7 +39,6 @@ export class HotelRoomtypePage {
      var data = JSON.stringify({itemroom});
      console.log(data);
      this.ite.setRoomType(data);
-     this.navCtrl.pop();
      this.navCtrl.push(HotelRoomservicePage);
   }
   

@@ -16,25 +16,25 @@
 </ion-header>
 <ion-content padding>
 
-<ion-card>
+<ion-card *ngFor="let his of HistoryBookingOpen">
   <ion-row>
     <ion-col>
-      <h2>Tour Name</h2>
+      <h2>{{his?.Title}}</h2>
     </ion-col>
   </ion-row>
 <ion-row>
   <ion-col>
-      <h4>Destination : Jakarta</h4>
+      <h4>Destination : {{his?.Destination}}</h4>
       <h4>Acomodation : Bus, 7 Seeter</h4>
-      <h4>From : 17 Mey 2017</h4>
+      <h4>From : {{his?.StartDate | date:'dd MMMM yyyy'}}</h4>
   </ion-col>
   <ion-col >
-    <h4>Total Guest : 13</h4><br>
-    <h4>Until : 17 June 2017</h4>
+    <h4>Total Guest :  {{his?.TotalGuest}}</h4><br>
+    <h4>Until : {{his?.EndDate | date:'dd MMMM yyyy'}}</h4>
   </ion-col>
 </ion-row>
 <ion-row>
-  <h4 style="float: right;">Total Price : XX.XXX.XXX,-</h4>
+  <h4 style="float: right;">Total Price : USD  {{his?.TourTotalPrice}},-</h4>
 </ion-row>
 </ion-card>
 

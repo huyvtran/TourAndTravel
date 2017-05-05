@@ -70,6 +70,12 @@ export class MyApp {
     this.email = info.email;
   }
 
+  ionViewWillEnter(){
+    let info = this.auth.userInfo();
+    this.username = info.username;
+    this.email = info.email;
+  }
+
   public logout() {
         this.auth.logout();
         this.username=null;

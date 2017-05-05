@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import {ViewController, NavController} from 'ionic-angular';
 import { DestinationPage  } from '../../pages/destination/destination';
-
+import { IteneraryService } from '../../providers/itenerary-service';
 
 
 @Component({
@@ -11,36 +11,29 @@ import { DestinationPage  } from '../../pages/destination/destination';
 })
 export class LocationPopoverComponent {
 
-  locationList = [{Id: 'Denpasar'}, {Id: 'Jakarta'}, {Id: 'Bandung'}, {Id: 'Choose Destination'}];
+  locationList = [{Id: 'Denpasar'}, {Id: 'Yogyakarta'}, {Id: 'Choose Destination'}];
   selectedLocation: string;
-  selectedLocation2;
   
-  constructor(public viewCtrl: ViewController, public navCtrl: NavController) {
+  constructor(public viewCtrl: ViewController, public navCtrl: NavController, private ite: IteneraryService, ) {
     this.selectedLocation = "";
-    this.selectedLocation2=null;
   }
 
 
   public setSelectedLocation(selectedItem) {
     if(selectedItem != 'Choose Destination'){
       this.selectedLocation = selectedItem;
+      this.ite.setDestination(selectedItem);
       this.viewCtrl.dismiss(this.selectedLocation);
     }else{
+      this.viewCtrl.dismiss();
       this.navCtrl.push(DestinationPage);
+      
     }
   }
 
-   public setLocation(selectedItem) {
-      window.localStorage.setItem('loc', selectedItem);
-      this.selectedLocation2 = selectedItem;
-      this.viewCtrl.dismiss(this.selectedLocation2);
-       
-  }
-   public getLocation(){
-      var loc = window.localStorage.getItem('loc');
-      this.selectedLocation2 = loc;
-      return this.selectedLocation2; 
-   }
+//  public setSelectedLocation2(selectedItem){
+//    this.viewCtrl.dismiss(this.selectedLocation);
+//  }
 
 
   sayHello() {

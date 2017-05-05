@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {LocationService} from '../../providers/location-service';
 import {IteneraryService} from '../../providers/itenerary-service';
-import { HomePage  } from '../../pages/home/home';
+//import { IteneraryBuilderPage } from '../itenerary-builder/itenerary-builder';
 @Component({
-  selector: 'page-destination',
-  templateUrl: 'destination.html',
+  selector: 'page-destination1',
+  templateUrl: 'destination1.html',
   providers: [LocationService, IteneraryService]
 })
-export class DestinationPage {
+export class DestinationPage1 {
   //locations : Array< {Id: string, Name: string, ImageUrl: string, Country: string}>;
   locations : any = {};
   myKeys: String[];
@@ -62,7 +62,7 @@ export class DestinationPage {
      console.log(selectedItem);
      this.ite.setDestination(selectedItem);
      this.navCtrl.pop();
-     this.navCtrl.setRoot(HomePage);
+     //this.navCtrl.push(IteneraryBuilderPage);
   }
 
 }

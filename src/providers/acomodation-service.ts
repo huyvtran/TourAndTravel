@@ -34,6 +34,19 @@ export class AcomodationService {
         return response;
     }
 
+    //  getAcomodationService(){
+    //     var headers = new Headers();
+    //     let token = this.auth.AuthToken;
+    //     let id = this.ite.getRoomType();
+    //     console.log(token);
+    //     headers.append('Authorization', 'Bearer ' +token);
+    //     var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/AccommodationItems?id='+id.room.Id; 
+    //     var response = this.http.get(url, {headers : headers}).map(res => res.json());        
+    //     return response;
+    // }
+
+
+    
 
 
 }

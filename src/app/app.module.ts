@@ -16,6 +16,7 @@ import { MybookingComPage} from '../pages/mybooking-com/mybooking-com';
 //IteneraryBuilder
 import { IteneraryBuilderPage } from '../pages/itenerary-builder/itenerary-builder';
 import { DestinationPage  } from '../pages/destination/destination';
+import { DestinationPage1  } from '../pages/destination1/destination1';
 //hotel
 import { ListHotelPage  } from '../pages/list-hotel/list-hotel';
 import { FilterHotelPage   } from '../pages/filter-hotel/filter-hotel';
@@ -49,6 +50,7 @@ import { FiltransportService } from '../providers/filtransport-service';
 import { LocationService } from '../providers/location-service';
 import { TransportService } from '../providers/transport-service';
 import { TransactionService  } from '../providers/transaction-service';
+import {  HistoryService } from '../providers/history-service';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -71,6 +73,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     //itinerarybuilder
     IteneraryBuilderPage,
     DestinationPage,
+    DestinationPage1,
     ListHotelPage,
     HotelRoomallocatePage,
     HotelRoomtypePage,
@@ -114,6 +117,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     //itineraryBuilder
     IteneraryBuilderPage,
     DestinationPage,
+    DestinationPage1,
     ListHotelPage,
     HotelRoomallocatePage,
     HotelRoomtypePage,
@@ -148,7 +152,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     FilacomodationService,
     FiltransportService,
     LocationService,
-    TransactionService
+    TransactionService,
+    HistoryService
   ]
 })
 export class AppModule {}

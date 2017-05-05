@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, Platform,ViewController } from 'ionic-angular';
+import { NavController, NavParams, ModalController} from 'ionic-angular';
 
 import {IteneraryService} from '../../providers/itenerary-service';
-import {DestinationPage} from '../destination/destination';
+import {DestinationPage1} from '../destination1/destination1';
 import {ListHotelPage} from '../list-hotel/list-hotel';
 import {FilterTransportPage} from '../filter-transport/filter-transport';
 import {ListAttractionPage} from '../list-attraction/list-attraction';
@@ -18,12 +18,14 @@ export class IteneraryBuilderPage {
 toursname: string;
 destination:string;
 attraction: string;
+passenger: string;
 tranportation : string;
 acomodation : string;
-
+minDate;
+maxDate;
 public event = {
-    monthStart: new Date().toISOString(),
-    monthEnd: new Date().toISOString()
+    monthStart: '',
+    monthEnd: ''
 }
 
   constructor(public navCtrl: NavController, 
@@ -32,31 +34,69 @@ public event = {
   private ite: IteneraryService) {          
     this.toursname= ''
     this.destination = this.ite.getDestination();
+    this.passenger='';
     this.attraction = '';
     this.tranportation = '';
     this.acomodation = '';
+    this.event ={ monthStart: new Date().toISOString().substring(0,10),
+    monthEnd: new Date().toISOString().substring(0,10)};
+
+
+
   }
 
   ionViewWillEnter() {
+    var des = this.ite.getDestination();
     var att = this.ite.getAttraction();
     var tourName = this.ite.getToursName();
     var transportName = this.ite.getTransport();
     var acomodationName =  this.ite.getAcomodation();
+    var passengerTotal = this.ite.getPassenger();
+    var dateTours = this.ite.getDateTour();
+     if(des != null){
+       
+      this.destination=des;
+    }
+
     if(att != null){
       this.attraction=att.attrac.Name;
     }
-
     if (tourName !=null){
       this.toursname=tourName;
     }
      if(transportName != null){
       this.tranportation=transportName.trans.Name;
     }
-
      if(acomodationName != null){
       this.acomodation=acomodationName.hot.Name;
     }
+     if(passengerTotal != null){
+       var adult = passengerTotal.guestTour['AdultQty'];
+       var child = passengerTotal.guestTour['ChildQty'];
+       var infant = passengerTotal.guestTour['InfantQty'];
+       if ( adult!=0 && child !=0 && infant !=0){
+         this.passenger = +adult+' Adults, '+child+' Childs, '+infant+' Infant ';
+       }else if(adult!=0 && child !=0 && infant ==0){
+          this.passenger = +adult+' Adults, '+child+' Childs';
+       }else if(adult!=0 && child ==0 && infant !=0){
+          this.passenger = +adult+' Adults, '+infant+' Infant ';
+       }else if(adult==0 && child !=0 && infant !=0){
+          this.passenger = +child+' Childs, '+infant+' Infant ';
+       }else if(adult!=0 && child ==0 && infant ==0){
+          this.passenger = +adult+' Adults';
+       }else if(adult==0 && child !=0 && infant ==0){
+          this.passenger = +child+' Childs';
+       }else if(adult==0 && child ==0 && infant !=0){
+         this.passenger = +infant+' Infant ';
 
+       }
+
+
+    }
+
+    if(dateTours != null){
+      this.event=dateTours.ev;
+    }
   }
 
 
@@ -65,8 +105,22 @@ public event = {
     this.ite.setToursName(data);
   }
 
+   inputDateTours(ev){
+
+    var data = JSON.stringify({ev});
+    console.log(data);
+    this.ite.setDateTour(data);
+  }
+
     destinationTapped(event) {
-    this.navCtrl.push(DestinationPage);
+    //this.navCtrl.pop();
+    //this.navCtrl.push(DestinationPage1).then((data)=>
+    this.navCtrl.push(DestinationPage1);
+    
+  }
+
+   passengerTapped(event) {
+    this.navCtrl.push(InputTravellersPage);
   }
 
     hotelTapped(event) {
@@ -83,99 +137,6 @@ public event = {
     createItenerary(event) {
     this.navCtrl.push(ConfirmBookingPage);
   }
-  openModal() {
-    let modal = this.modalCtrl.create(InputTravellersPage);
-    modal.present();
-  }
 
 
-
-
-// doPrompt() {
-//     let alert = this.alertCtrl.create({
-//     title: 'Travellers',
-//     inputs: [
-//       {
-//         name: 'adults',
-//         placeholder: 'Enter Adults',
-//         type: 'number'
-//       },
-//       {
-//         name: 'children',
-//         placeholder: 'Enter Children',
-//         type: 'number'
-//       },
-//       {
-//         name: 'children',
-//         placeholder: 'Enter Infant',
-//         type: 'number'
-//       }
-
-//     ],
-//     buttons: [
-//       {
-//         text: 'Cancel',
-//         role: 'cancel',
-//         handler: data => {
-//           console.log('You Clicked on Cancel');
-//         }
-//       },
-//       {
-//           text: 'Save',
-//           handler: data => {
-//           console.log('Saved clicked');
-//         }
-//       }
-//     ]
-//   });
-//   alert.present();
-// }
-
-}
-
-
-
-
-@Component({
-  template: `
- <ion-header-bar class="bar bar-header bar-positive">
-          <h1 class="title">New Contact</h1>
-          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
-        </ion-header-bar>
-        <ion-content has-header="true" padding="true">
-          <div>
-            <p>
-              I want some paddin'
-            </p>
-            <div class="list">
-              <label class="item item-input">
-                <span class="input-label">First Name</span>
-                <input ng-model="newUser.firstName" type="text">
-              </label>
-              <label class="item item-input">
-                <span class="input-label">Last Name</span>
-                <input ng-model="newUser.lastName" type="text">
-              </label>
-              <label class="item item-input">
-                <span class="input-label">Email</span>
-                <input ng-model="newUser.email" type="text">
-              </label>
-              <button class="button button-full button-positive" ng-click="createContact()">Create</button>
-            </div>
-          </div>
-        </ion-content>
-`
-})
-export class ModalContentPage {
-  character;
-
-  constructor(
-    public platform: Platform,
-    public params: NavParams,
-    public viewCtrl: ViewController
-  ) {}
-
-  dismiss() {
-    this.viewCtrl.dismiss();
-  }
 }

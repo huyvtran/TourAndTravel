@@ -14,11 +14,10 @@
 
 
 <ion-content padding>
- <ion-item-group>
+ 
+ <ion-item-group  >
    <h4>Choose Room Services</h4>
-    <ion-item (click)="setSelectedRoomSer(aaa)">Bed Only</ion-item>
-    <ion-item>Bed with Breakfast</ion-item>
-    <ion-item>Half Board</ion-item>
+    <ion-item *ngFor="let srooms of roomtypes" (click)="setSelectedRoomSer(srooms)">{{srooms}}</ion-item>
   </ion-item-group>
 </ion-content>
 

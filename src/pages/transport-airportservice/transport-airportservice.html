@@ -14,7 +14,6 @@
 <ion-content padding>
    <h5> Choose Airport Service</h5>
 <ion-list radio-group>
-
   <ion-item>
     <ion-label>Pick-up</ion-label>
     <ion-radio value="Pick-up"></ion-radio>
@@ -25,10 +24,8 @@
   </ion-item>
   <ion-item>
     <ion-label>Pick-up and Drop-off</ion-label>
-    <ion-radio value="Pick-up and Drop-off"></ion-radio>
+    <ion-radio value="Pick-up and Drop-off" (ionSelect)=setTransService()></ion-radio>
   </ion-item>
-
-  
 </ion-list>
 </ion-content>
 
