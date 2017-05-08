@@ -24,7 +24,9 @@
     </ion-row>
     <ion-row>
       <ion-col *ngFor="let rat of listRatings">
+        <ion-item>
          <a ion-button block color="dark" [outline]="inClass" (click)="filterrating(rat.Id)">{{rat.Name}}</a>
+        </ion-item>
       </ion-col>
     </ion-row>
 
@@ -52,7 +54,7 @@
     </ion-row>
   </ion-grid>
 
-<!--<div class="btn-group" data-toggle="buttons">
+<div class="btn-group" data-toggle="buttons">
   <label class="btn btn-primary active">
     <input type="checkbox" checked> Option 1 (pre-checked)
   </label>
@@ -62,35 +64,12 @@
   <label class="btn btn-primary">
     <input type="checkbox"> Option 3
   </label>
-</div>
+</div> 
 
-
-        <ion-row>
-            <ion-col ion-item>
-              <ion-label>item</ion-label>
-              <ion-checkbox></ion-checkbox>
-            </ion-col>
-             <ion-col ion-item>
-              <ion-label>item</ion-label>
-              <ion-checkbox></ion-checkbox>
-            </ion-col>
-             <ion-col ion-item>
-              <ion-label>item</ion-label>
-              <ion-checkbox></ion-checkbox>
-            </ion-col>
-              <ion-col ion-item>
-              <ion-label>item</ion-label>
-              <ion-checkbox></ion-checkbox>
-            </ion-col>
-              <ion-col ion-item>
-              <ion-label>item</ion-label>
-              <ion-checkbox></ion-checkbox>
-            </ion-col>
-              <ion-col ion-item>
-              <ion-checkbox><ion-label>item</ion-label></ion-checkbox>
-            </ion-col>
-          </ion-row>-->
-
+<ion-select [(ngModel)]="gaming">
+      <ion-option value="nes">NES</ion-option>
+      <ion-option value="n64">Nintendo64</ion-option>
+</ion-select>
 </ion-content>
 
 <ion-footer>

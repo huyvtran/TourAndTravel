@@ -24,7 +24,7 @@ export class ListTransportPage {
   }
 
    ionViewWillEnter() {
-    this.tra.listTransport().subscribe(data=>{
+    this.tra.listTransportbyCity().subscribe(data=>{
             this.listtransports=data;
             this.transport=this.listtransports;
             console.log(this.listtransports);

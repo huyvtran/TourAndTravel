@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams ,ViewController} from 'ionic-angular';
 import {LocationService} from '../../providers/location-service';
 import {IteneraryService} from '../../providers/itenerary-service';
 import { HomePage  } from '../../pages/home/home';
@@ -16,7 +16,8 @@ export class DestinationPage {
   constructor(public navCtrl: NavController, 
   public navParams: NavParams, 
   private locService: LocationService, 
-  private ite: IteneraryService
+  private ite: IteneraryService,
+  public viewCtrl: ViewController
   ) {
 
   }
@@ -61,6 +62,7 @@ export class DestinationPage {
     setSelectedLocation(selectedItem) {
      console.log(selectedItem);
      this.ite.setDestination(selectedItem);
+     //this.viewCtrl.dismiss();
      this.navCtrl.pop();
      this.navCtrl.setRoot(HomePage);
   }

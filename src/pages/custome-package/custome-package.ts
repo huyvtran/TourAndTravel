@@ -44,15 +44,19 @@ export class CustomePackagePage {
     });
 
      popover.onDidDismiss((popoverData) => {
-       if(popoverData != ""){
+       if(popoverData != null){
          if(popoverData != undefined){
           this.selectedLocation = popoverData;
           //this.ite.setDestination(popover);
-         }else{
-           this.selectedLocation = this.ite.getDestination();
+         }else{      
+           this.selectedLocation = this.ite.getDestination(); 
          }
       }else{
+          if(this.ite.getDestination()==null){
+            this.selectedLocation = "Selected Destination"; 
+          }else{
           this.selectedLocation = this.ite.getDestination();
+          }
       }
     })
 

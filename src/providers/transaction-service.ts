@@ -39,12 +39,14 @@ export class TransactionService {
                       "Attractions":[
                         {
                           "ServiceItemId": Number(this.ite.getAttraction().attrac.ServiceItemId),
+                    
                           "Date": this.ite.getDateTour().ev['monthStart']
                         }
                       ],
                       "Transportations":[
                         {
                           "ServiceItemId": Number(this.ite.getTransport().trans.ServiceItemId),
+                          "TransportationItemServiceType": this.ite.getTransportSer().itemser,
                           "Date": this.ite.getDateTour().ev['monthStart']
                         }
                       ],                    
@@ -91,6 +93,7 @@ export class TransactionService {
                       "Transportations":[
                         {
                           "ServiceItemId": Number(this.ite.getTransport().trans.ServiceItemId),
+                          "TransportationItemServiceType": this.ite.getTransportSer().itemser,
                           "Date": this.ite.getDateTour().ev['monthStart']
                         }
                       ],                    

@@ -6,9 +6,6 @@
 -->
 <ion-header>
   <ion-navbar>
-    <button menuToggle *ngIf="!setSelectedLocation">
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title>Choose Destination</ion-title>
   </ion-navbar>
   <ion-searchbar placeholder="Search a location..." (ionInput)="searchLocationDB($event, searchKey)"></ion-searchbar>

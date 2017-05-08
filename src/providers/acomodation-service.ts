@@ -7,9 +7,36 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AcomodationService {
+    ratings;
+    areas;
+    locations;
+    types;
+    facilities;
+
 
   constructor(public http: Http,public auth:AuthService, public ite:IteneraryService) {
-    console.log('Hello AcomodationService Provider');
+    this.ratings = null;
+    this.areas = null;
+    this.locations = null;
+    this.types= null;
+    this.facilities = null;
+  }
+
+
+  setRatings(rat){
+      this.ratings= rat;
+  }
+  setAreas(ar){
+      this.areas= ar;
+  }
+  setLocations(loc){
+      this.locations= loc;
+  }
+  setTypes(ty){
+      this.types= ty;
+  }
+  setFacilities(fac){
+      this.facilities= fac;
   }
 
    searchListAcomodation() {
@@ -19,6 +46,22 @@ export class AcomodationService {
         console.log(token);
         headers.append('Authorization', 'Bearer ' +token);
         var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/AccommodationProfiles/ByCity?city=' +des; 
+        var response = this.http.get(url, {headers : headers}).map(res => res.json());        
+        return response;
+    }
+
+    searchListAcomodationFilter() {
+        var headers = new Headers();
+        let des = this.ite.getDestination();
+        let rat = this.ratings;
+        let ar = this.areas;
+        let loc = this.locations;
+        let ty = this.types;
+        let fac = this.facilities;
+        let token = this.auth.AuthToken;
+        console.log(token);
+        headers.append('Authorization', 'Bearer ' +token);
+        var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/AccommodationProfiles/Filter?cityId='+des+'&ratingId='+rat +'&areaId='+ar+'&locationId='+loc+'&typeId='+ty+'&facilityId='+fac; 
         var response = this.http.get(url, {headers : headers}).map(res => res.json());        
         return response;
     }

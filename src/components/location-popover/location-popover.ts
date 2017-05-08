@@ -25,19 +25,10 @@ export class LocationPopoverComponent {
       this.ite.setDestination(selectedItem);
       this.viewCtrl.dismiss(this.selectedLocation);
     }else{
-      this.viewCtrl.dismiss();
       this.navCtrl.push(DestinationPage);
+      this.viewCtrl.dismiss();
       
     }
-  }
-
-//  public setSelectedLocation2(selectedItem){
-//    this.viewCtrl.dismiss(this.selectedLocation);
-//  }
-
-
-  sayHello() {
-    alert("Hello World!");
   }
 
 }

@@ -24,17 +24,22 @@ import { HotelRoomtypePage  } from '../pages/hotel-roomtype/hotel-roomtype';
 import { HotelRoomallocatePage   } from '../pages/hotel-roomallocate/hotel-roomallocate';
 import { HotelRoomservicePage   } from '../pages/hotel-roomservice/hotel-roomservice';
 //transport
-import { ListTransportPage  } from '../pages/list-transport/list-transport';
-import { FilterTransportPage   } from '../pages/filter-transport/filter-transport';
-import {  TransportAirportservicePage  } from '../pages/transport-airportservice/transport-airportservice';
+import { ListTransportPage } from '../pages/list-transport/list-transport';
+import { FilterTransportPage } from '../pages/filter-transport/filter-transport';
+import { TransportAirportservicePage } from '../pages/transport-airportservice/transport-airportservice';
 
 import { ListAttractionPage  } from '../pages/list-attraction/list-attraction';
 import {InputTravellersPage} from '../pages/input-travellers/input-travellers';
+
+//TestFilterManual
+import { FilterTransport2Page } from '../pages/filter-transport2/filter-transport2';
+import { FilterHotel2Page   } from '../pages/filter-hotel2/filter-hotel2';
+
 //result
 import {ConfirmBookingPage} from '../pages/confirm-booking/confirm-booking';
 //component
 import { LocationPopoverComponent} from '../components/location-popover/location-popover';
-
+//Coba-coba
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { MovieListPage } from '../pages/movie-list/movie-list';
@@ -87,6 +92,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     
     InputTravellersPage,
 
+    //filterManual
+    FilterHotel2Page,
+    FilterTransport2Page,
+
     //result
     ConfirmBookingPage,
     //component
@@ -129,6 +138,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     FilterHotelPage,
     FilterTransportPage,
     InputTravellersPage,
+
+
+    //filterManual
+    FilterHotel2Page,
+    FilterTransport2Page,
 
     //result
     ConfirmBookingPage,
