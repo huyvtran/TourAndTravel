@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {FilacomodationService} from '../../providers/filacomodation-service';
 import {AcomodationService} from '../../providers/acomodation-service';
+
+
+import { ListHotelPage } from '../list-hotel/list-hotel';
 /*
   Generated class for the FilterHotel2 page.
 
@@ -23,12 +26,71 @@ export class FilterHotel2Page {
   constructor(public navCtrl: NavController, public navParams: NavParams , public fil:FilacomodationService, public aco: AcomodationService) {}
 
   ionViewWillEnter() {
-    this.listRatings = this.fil.listRatings;
-    this.listAreas = this.fil.listAreas;
-    this.listLocations = this.fil.listLocations;
-    this.listTypes = this.fil.listTypes;
-    this.listFacilities = this.fil.listFacilities;
+        this.listRating();
+        this.listArea();
+        this.listLocation();
+        this.listType();
+        this.listFacility();
   }
+
+    listRating() {
+        this.fil.listAcomodationRatings().subscribe(data => {
+            this.listRatings = (data);
+            console.log(this.listRatings);
+        }, err => {
+            console.log(err);
+        },
+            () => console.log('Ratings Search Complete')
+        );
+    }
+
+
+    listArea() {
+        this.fil.listAcomodationAreas().subscribe(data => {
+            this.listAreas = (data);
+            console.log(this.listAreas);
+        }, err => {
+            console.log(err);
+        },
+            () => console.log('Area Search Complete')
+        );
+    }
+
+
+    listLocation() {
+        this.fil.listAcomodationLocations().subscribe(data => {
+            this.listLocations = (data);
+            console.log(this.listLocations);
+        }, err => {
+            console.log(err);
+        },
+            () => console.log('Location Search Complete')
+        );
+    }
+
+
+    listType() {
+        this.fil.listAcomodationTypes().subscribe(data => {
+            this.listTypes = (data);
+            console.log(this.listTypes);
+        }, err => {
+            console.log(err);
+        },
+            () => console.log('Type Search Complete')
+        );
+    }
+
+    listFacility() {
+        this.fil.listAcomodationFacilities().subscribe(data => {
+            this.listFacilities = (data);
+            console.log(this.listFacilities);
+        }, err => {
+            console.log(err);
+        },
+            () => console.log('Facility Search Complete')
+        );
+    }
+
 
   filterRat(ratings){
     console.log(ratings);
@@ -54,6 +116,11 @@ export class FilterHotel2Page {
   filterFac(facilities){
     console.log(facilities);
     this.aco.setFacilities(facilities);
+  }
+
+  listTapped(event) {
+    this.navCtrl.pop();
+    this.navCtrl.push(ListHotelPage);
   }
 
 }

@@ -1,9 +1,3 @@
-<!--
-  Generated template for the ConfirmBooking page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -39,7 +33,7 @@
   <ion-col>
       <h3>{{accom.Name}}</h3>
       <h4>Address : {{accom.Address}}</h4>
-      <h4>Room Type : {{accom.RoomType}}</h4>
+      <h4>Room Type : {{accom.RoomType}}, Service</h4>
       <h4>Allocations</h4>
   </ion-col>
 </ion-row>
@@ -47,10 +41,10 @@
   <ion-col col-1>
   </ion-col>
  <ion-col >
-   <h5>Sharing Room</h5>
+   <h5>Twin Room</h5>
    <h5>Single Room</h5>
-   <h5>Extra Room</h5>
-   <h5>Sharing Room</h5>
+   <h5>Extra Bed</h5>
+   <h5>Sharing Bed with Parents</h5>
  </ion-col>
  <ion-col >
    <h5>{{accom.Allocations['SharingRoomPax']}} Guest</h5>
@@ -71,7 +65,7 @@
   </ion-row>
 <ion-row *ngFor="let tra of TransportationSum">
   <ion-col>
-      <h4>{{tra.TransportationType}}</h4>
+      <h4>{{tra.TransportationType}} {{tra.TransportationCapacity}} Seater</h4>
       <h4>Services : {{tra.TransportationService}}</h4>
   </ion-col>
 </ion-row>
@@ -98,7 +92,7 @@
   </ion-row>
 <ion-row>
   <ion-col col-77>
-   <h5>Sharing Room ({{price.SharingRoomSum['Pax']}} X {{price.SharingRoomSum['Currency']}} {{price.SharingRoomSum['PricePerPax']}},-/Guest)</h5>
+   <h5>Staying in Twin Room ({{price.SharingRoomSum['Pax']}} X {{price.SharingRoomSum['Currency']}} {{price.SharingRoomSum['PricePerPax']}},-/Guest)</h5>
   </ion-col>
   <ion-col>
    <h5>{{price.SharingRoomSum['Currency']}} {{price.SharingRoomSum['TotalPrice']}},-</h5>
@@ -106,7 +100,7 @@
 </ion-row>
 <ion-row>
   <ion-col col-77>
-   <h5>Single Room ({{price.SingleRoomSum['Pax']}} X {{price.SingleRoomSum['Currency']}} {{price.SingleRoomSum['PricePerPax']}},-/Guest)</h5>
+   <h5>Staying in Single Room ({{price.SingleRoomSum['Pax']}} X {{price.SingleRoomSum['Currency']}} {{price.SingleRoomSum['PricePerPax']}},-/Guest)</h5>
   </ion-col>
   <ion-col>
    <h5>{{price.SingleRoomSum['Currency']}} {{price.SingleRoomSum['TotalPrice']}},-</h5>
@@ -114,7 +108,7 @@
 </ion-row>
 <ion-row>
   <ion-col col-77>
-   <h5>Extra Room ({{price.ExtraBedSum['Pax']}} X {{price.ExtraBedSum['Currency']}} {{price.ExtraBedSum['PricePerPax']}},-/Guest)</h5>
+   <h5>Staying in Extra Bed ({{price.ExtraBedSum['Pax']}} X {{price.ExtraBedSum['Currency']}} {{price.ExtraBedSum['PricePerPax']}},-/Guest)</h5>
   </ion-col>
   <ion-col>
    <h5>{{price.ExtraBedSum['Currency']}} {{price.ExtraBedSum['TotalPrice']}},-</h5>
@@ -122,7 +116,7 @@
 </ion-row>
 <ion-row>
   <ion-col col-77>
-   <h5>Sharing Room ({{price.SharingBedSum['Pax']}} X {{price.SharingBedSum['Currency']}} {{price.SharingBedSum['PricePerPax']}},-/Guest)</h5>
+   <h5>Staying in Sharing Bed ({{price.SharingBedSum['Pax']}} X {{price.SharingBedSum['Currency']}} {{price.SharingBedSum['PricePerPax']}},-/Guest)</h5>
   </ion-col>
   <ion-col>
    <h5>{{price.SharingBedSum['Currency']}} {{price.SharingBedSum['TotalPrice']}},-</h5>

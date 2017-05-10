@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import {IteneraryBuilderPage} from '../itenerary-builder/itenerary-builder'
+import { NavController, NavParams, ViewController } from 'ionic-angular';
+//import {IteneraryBuilderPage} from '../itenerary-builder/itenerary-builder'
 import {IteneraryService} from '../../providers/itenerary-service';
 
 @Component({
@@ -10,7 +10,7 @@ import {IteneraryService} from '../../providers/itenerary-service';
 })
 export class TransportAirportservicePage {
    transportser:Array<any>;
-  constructor(public navCtrl: NavController, public navParams: NavParams , public ite : IteneraryService) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams ,public viewCtrl:ViewController, public ite : IteneraryService) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TransportAirportservicePage');
@@ -22,14 +22,14 @@ export class TransportAirportservicePage {
       console.log(this.transportser);
   }
   setTransService(itemser){
-    console.log(itemser);
      var data = JSON.stringify({itemser});
      console.log(data);
      this.ite.setTransportSer(data);
+      this.navCtrl.pop().then(() => {
+        // first we find the index of the current view controller:
+        const index = this.viewCtrl.index;
+        // then we remove it from the navigation stack
+        this.navCtrl.remove(index);
+      });
   }
-
-   tappedDone(event) {
-    this.navCtrl.push(IteneraryBuilderPage);
-  }
-
 }

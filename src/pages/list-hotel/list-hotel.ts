@@ -81,12 +81,8 @@ export class ListHotelPage {
 
   filterhotelTapped(event) {
     //this.navCtrl.push(FilterHotelPage);
+    this.navCtrl.pop();
     this.navCtrl.push(FilterHotel2Page);
   }
-
-  hotelTapped(event) {
-    this.navCtrl.push(HotelRoomtypePage);
-  }
-
 
 }

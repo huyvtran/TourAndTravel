@@ -35,7 +35,7 @@ export class TransactionService {
                       "StartDate": this.ite.getDateTour().ev['monthStart'],
                       "EndDate": this.ite.getDateTour().ev['monthEnd'],
                       "CityDestinationId": null,
-                      "RegionDestinationId": "BALI",
+                      "RegionDestinationId": this.ite.getObjectLocation()[0].RegionId,
                       "Attractions":[
                         {
                           "ServiceItemId": Number(this.ite.getAttraction().attrac.ServiceItemId),
@@ -56,6 +56,8 @@ export class TransactionService {
                           "Date": this.ite.getDateTour().ev['monthStart'],
                           "SharingRoomQty": Number(this.ite.getRoomAllo().allocroom.sharingRooms),
                           "SingleRoomQty" : Number(this.ite.getRoomAllo().allocroom.singleRoom),
+                          "ExtraBedQty": Number(this.ite.getRoomAllo().allocroom.extraBed),
+                          "SharingBedQty" : Number(this.ite.getRoomAllo().allocroom.sharingBed),
                           "AccommodationItemServiceType": this.ite.getRoomSer().itemser
                         }                      
                       ]
@@ -74,6 +76,8 @@ export class TransactionService {
     }
 
 
+
+
      getTourTransaksi(){ 
         let token = this.auth.AuthToken;
          var json = { "title":  this.ite.getToursName(),
@@ -83,7 +87,7 @@ export class TransactionService {
                       "StartDate": this.ite.getDateTour().ev['monthStart'],
                       "EndDate": this.ite.getDateTour().ev['monthEnd'],
                       "CityDestinationId": null,
-                      "RegionDestinationId": "BALI",
+                      "RegionDestinationId": this.ite.getObjectLocation()[0].RegionId,
                       "Attractions":[
                         {
                           "ServiceItemId": Number(this.ite.getAttraction().attrac.ServiceItemId),
@@ -116,7 +120,8 @@ export class TransactionService {
         //headers.append('Content-Type', 'application/json');
         let options = new RequestOptions({ headers: headers });
         var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/TourTransactions/'; 
-        var response = this.http.post(url, json, options).map(res => res.json());        
+        var response = this.http.post(url, json, options).map(res => res.json());
+        this.ite.delLocalStorage();        
         return response;
     }
 

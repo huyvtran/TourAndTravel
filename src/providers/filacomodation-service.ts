@@ -13,85 +13,9 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FilacomodationService {
 
-    listRatings: Array<any>;
-    listAreas: Array<any>;
-    listLocations: Array<any>;
-    listTypes: Array<any>;
-    listFacilities: Array<any>;
-
-    constructor(public http: Http, public auth: AuthService, public ite: IteneraryService) {
-        this.http = http;
-        this.listRatings = null;
-        this.listAreas = null;
-        this.listLocations = null;
-        this.listTypes = null;
-        this.listFacilities = null;
-        this.listRating();
-        this.listArea();
-        this.listLocation();
-        this.listType();
-        this.listFacility();
+    constructor(public http: Http, public auth: AuthService, public ite: IteneraryService) { 
     }
 
-
-
-    listRating() {
-        this.listAcomodationRatings().subscribe(data => {
-            this.listRatings = (data);
-            console.log(this.listRatings);
-        }, err => {
-            console.log(err);
-        },
-            () => console.log('Ratings Search Complete')
-        );
-    }
-
-
-    listArea() {
-        this.listAcomodationAreas().subscribe(data => {
-            this.listAreas = (data);
-            console.log(this.listAreas);
-        }, err => {
-            console.log(err);
-        },
-            () => console.log('Area Search Complete')
-        );
-    }
-
-
-    listLocation() {
-        this.listAcomodationLocations().subscribe(data => {
-            this.listLocations = (data);
-            console.log(this.listLocations);
-        }, err => {
-            console.log(err);
-        },
-            () => console.log('Location Search Complete')
-        );
-    }
-
-
-    listType() {
-        this.listAcomodationTypes().subscribe(data => {
-            this.listTypes = (data);
-            console.log(this.listTypes);
-        }, err => {
-            console.log(err);
-        },
-            () => console.log('Type Search Complete')
-        );
-    }
-
-    listFacility() {
-        this.listAcomodationFacilities().subscribe(data => {
-            this.listFacilities = (data);
-            console.log(this.listFacilities);
-        }, err => {
-            console.log(err);
-        },
-            () => console.log('Facility Search Complete')
-        );
-    }
 
 
     listAcomodationRatings() {

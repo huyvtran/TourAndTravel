@@ -10,10 +10,10 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class FiltransportService {
-
   constructor(public http: Http) {
-    console.log('Hello FiltransportService Provider');
   }
+
+   
 
    listTransportRatings() {
         var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/transportationRatings'; 

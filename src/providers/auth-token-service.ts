@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 // import { Observable } from 'rxjs/Observable';
 import {Http, Headers} from '@angular/http';
+//import { MyApp } from '../app/app.component';
 
 export class User {
   username: string;
@@ -140,6 +141,7 @@ export class AuthService {
     }
 
     public userInfo():User {
+ //       this.my.setUser(this.currentUser.username);
         return this.currentUser;
     }
 

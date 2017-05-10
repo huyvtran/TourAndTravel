@@ -24,12 +24,10 @@ export class LocationService {
         console.log(token);
         headers.append('Authorization', 'Bearer ' +token);
         var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/cities?id='+encodeURI(locationName); 
-        var response = this.http.get(url, {headers : headers}).map(res => res.json());
-        // var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/cities/';
-        // var response = this.http.get(url).map(res => res.json());
-        
+        var response = this.http.get(url, {headers : headers}).map(res => res.json());        
         return response;
     }
+
 
 
 }

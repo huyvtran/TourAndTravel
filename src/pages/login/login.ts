@@ -3,7 +3,7 @@ import { NavController, AlertController, LoadingController, Loading } from 'ioni
 import { AuthService } from '../../providers/auth-token-service';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../../pages/home/home';
-//import { MyApp } from '../../app/app.component';
+
 
 
 @Component({

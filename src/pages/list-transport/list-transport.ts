@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {FilterTransportPage} from '../filter-transport/filter-transport';
+//import {FilterTransportPage} from '../filter-transport/filter-transport';
+import {FilterTransport2Page} from '../filter-transport2/filter-transport2';
 import {TransportAirportservicePage} from '../transport-airportservice/transport-airportservice';
 import {TransportService} from '../../providers/transport-service';
 import {IteneraryService} from '../../providers/itenerary-service';
@@ -19,12 +20,8 @@ export class ListTransportPage {
   public tra : TransportService
   ) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListTransportPage');
-  }
-
    ionViewWillEnter() {
-    this.tra.listTransportbyCity().subscribe(data=>{
+    this.tra.listTransportFilter().subscribe(data=>{
             this.listtransports=data;
             this.transport=this.listtransports;
             console.log(this.listtransports);
@@ -70,7 +67,8 @@ getItems(searchbar) {
     }
 
      filtertransTapped(event) {
-    this.navCtrl.push(FilterTransportPage);
+       this.navCtrl.pop();
+       this.navCtrl.push(FilterTransport2Page);
   }
 
   

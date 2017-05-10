@@ -20,7 +20,7 @@ export class CustomePackagePage {
       public popoverCtrl: PopoverController,
       ) {
             this.selectedLocation = this.ite.destination;    
-          
+            
       }
 
 

@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController} from 'ionic-angular';
 
 import {IteneraryService} from '../../providers/itenerary-service';
+import {FiltransportService} from '../../providers/filtransport-service';
 import {DestinationPage1} from '../destination1/destination1';
-import {ListHotelPage} from '../list-hotel/list-hotel';
-import {FilterTransportPage} from '../filter-transport/filter-transport';
+//import {ListHotelPage} from '../list-hotel/list-hotel';
+//import {FilterTransportPage} from '../filter-transport/filter-transport';
+import {FilterTransport2Page} from '../filter-transport2/filter-transport2';
+import {FilterHotel2Page} from '../filter-hotel2/filter-hotel2';
 import {ListAttractionPage} from '../list-attraction/list-attraction';
 import {InputTravellersPage} from '../input-travellers/input-travellers';
 import {ConfirmBookingPage} from '../confirm-booking/confirm-booking';
@@ -12,7 +15,7 @@ import {ConfirmBookingPage} from '../confirm-booking/confirm-booking';
 @Component({
   selector: 'page-itenerary-builder',
   templateUrl: 'itenerary-builder.html',
-  providers: [IteneraryService]
+  providers: [IteneraryService,FiltransportService]
 })
 export class IteneraryBuilderPage {
 toursname: string;
@@ -31,7 +34,9 @@ public event = {
   constructor(public navCtrl: NavController, 
   public navParams: NavParams, 
   public modalCtrl: ModalController,  
-  private ite: IteneraryService) {          
+  private ite: IteneraryService,
+  public fil: FiltransportService
+  ) {          
     this.toursname= ''
     this.destination = this.ite.getDestination();
     this.passenger='';
@@ -40,12 +45,11 @@ public event = {
     this.acomodation = '';
     this.event ={ monthStart: new Date().toISOString().substring(0,10),
     monthEnd: new Date().toISOString().substring(0,10)};
-
-
-
+    
   }
 
   ionViewWillEnter() {
+
     var des = this.ite.getDestination();
     var att = this.ite.getAttraction();
     var tourName = this.ite.getToursName();
@@ -106,15 +110,12 @@ public event = {
   }
 
    inputDateTours(ev){
-
     var data = JSON.stringify({ev});
     console.log(data);
     this.ite.setDateTour(data);
   }
 
     destinationTapped(event) {
-    //this.navCtrl.pop();
-    //this.navCtrl.push(DestinationPage1).then((data)=>
     this.navCtrl.push(DestinationPage1);
     
   }
@@ -124,10 +125,10 @@ public event = {
   }
 
     hotelTapped(event) {
-    this.navCtrl.push(ListHotelPage);
+    this.navCtrl.push(FilterHotel2Page);
   }
     transportTapped(event) {
-    this.navCtrl.push(FilterTransportPage);
+    this.navCtrl.push(FilterTransport2Page);
   }
 
     attractionTapped(event) {

@@ -17,11 +17,11 @@
 
   <ion-card *ngFor="let itemroom of listroomtypes" (click)="setSelectedRoomAllo(itemroom)">
 <ion-row>
-  <ion-col><img src="http://www.college-hotel.com/client/cache/contenu/_500____college-hotelp1diapo1_718.jpg"/></ion-col>
+  <ion-col><img src="{{itemroom.ImageUrl}}"/></ion-col>
   <ion-col width-60>
     <div >
     <h2>{{itemroom.AccommodationItemTypeName}}</h2>
-    <h3>Explanation: {{itemroom.Desc}}</h3>
+    <h3>{{itemroom.Desc}}</h3>
     <p style=" white-space: pre-wrap;" >Facilities: <span *ngFor="let facilities of itemroom.SimpleAccommodationItemFacilities">{{facilities.AccommodationFacilityName}} </span></p>
     
     </div></ion-col>

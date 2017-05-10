@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams,ViewController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import {IteneraryService} from '../../providers/itenerary-service';
 import {IteneraryBuilderPage} from '../itenerary-builder/itenerary-builder';
 
@@ -16,7 +16,7 @@ import {IteneraryBuilderPage} from '../itenerary-builder/itenerary-builder';
 export class InputTravellersPage {
   guestTour = { AdultQty: null, ChildQty: null, InfantQty: null};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public ite : IteneraryService) {
+  constructor(public navCtrl: NavController, public ite : IteneraryService, public alertCtrl: AlertController) {
     this.guestTour = { AdultQty: 0, ChildQty: 0, InfantQty: 0}
   }
   
@@ -27,10 +27,49 @@ export class InputTravellersPage {
 
   doneTapped(guestTour) {
       console.log(guestTour);
+      let ga = Number(guestTour.AdultQty)
+      let gc = Number(guestTour.ChildQty)
+      let gi = Number(guestTour.InfantQty)
+      if (typeof ga != "number"  || String(ga) == "NaN" ){
+        this.showAlertAdult();
+      }
+      else if (typeof gc != "number" || String(gc) == "NaN" ){
+        this.showAlertChild()
+      }
+      else if (typeof gi != "number"  || String(gi) == "NaN" ){
+        this.showAlertInfant()
+      } else
+      {
       var data = JSON.stringify({guestTour});
       this.ite.setPassenger(data);
       this.navCtrl.pop();
       this.navCtrl.push(IteneraryBuilderPage);
+      }
+  }
+
+
+  showAlertAdult() {
+    let alert = this.alertCtrl.create({
+      subTitle: 'Input Adult Not Number',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+   showAlertChild() {
+    let alert = this.alertCtrl.create({
+      subTitle: 'Input Child Not Number',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  showAlertInfant() {
+    let alert = this.alertCtrl.create({
+      subTitle: 'Input Infant Not Number',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

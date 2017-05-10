@@ -6,9 +6,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 //screen Page
 import { HomePage } from '../pages/home/home';
 import { MybookingPage } from '../pages/mybooking/mybooking';
-import { ListPage } from '../pages/list/list';
-import { LoginPage } from '../pages/login/login';
-import { MovieListPage } from '../pages/movie-list/movie-list';
+// import { ListPage } from '../pages/list/list';
+ import { LoginPage } from '../pages/login/login';
+// import { MovieListPage } from '../pages/movie-list/movie-list';
 
 //import { HotelRoomallocatePage   } from '../pages/hotel-roomallocate/hotel-roomallocate';
 
@@ -46,8 +46,6 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'My Booking', component: MybookingPage },
-      { title: 'My First List', component: ListPage },
-      { title: 'Movie List', component: MovieListPage },
       { title: 'Logout', component: this.logout() }  
     ];
   }
@@ -56,6 +54,7 @@ export class MyApp {
       this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
     });
   }
 
@@ -68,6 +67,10 @@ export class MyApp {
     let info = this.auth.userInfo();
     this.username = info.username;
     this.email = info.email;
+  }
+
+  setUser(user){
+    this.username = user;
   }
 
   ionViewWillEnter(){

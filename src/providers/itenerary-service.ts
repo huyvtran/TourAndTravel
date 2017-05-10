@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
+import {AuthService} from '../providers/auth-token-service'
 import 'rxjs/add/operator/map';
 
 /*
@@ -10,6 +11,7 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class IteneraryService {
+    locations;
     toursname;
     destination;
     passengger;
@@ -22,7 +24,8 @@ export class IteneraryService {
     roomservice;
     transportservice;
 
-  constructor(public http: Http) {
+  constructor(public http: Http, public auth:AuthService) {
+    this.locations;
     this.toursname;
     this.destination="Selected Destination";
     this.passengger=null;
@@ -37,6 +40,34 @@ export class IteneraryService {
     this.transportservice=null;
 
   }
+
+  delLocalStorage(){
+            localStorage.removeItem('guest');
+            localStorage.removeItem('tName');
+            localStorage.removeItem('date');
+            localStorage.removeItem('hot');
+            localStorage.removeItem('trans');
+            localStorage.removeItem('att');
+  }
+
+  public setDestination(des) {
+        var firstDes = window.localStorage.getItem('des');
+        if(firstDes != des){
+            this.delLocalStorage();
+        }
+        
+        window.localStorage.setItem('des', des);
+        this.destination=des;
+        this.searchObjctLocation();
+    }
+
+     public getDestination() {
+        var des = window.localStorage.getItem('des');
+        this.destination=des;
+        
+        return this.destination;
+    }
+
    public setTransportSer(tSer) {
         window.localStorage.setItem('tSer', tSer);
         this.transportservice=tSer;
@@ -84,16 +115,7 @@ export class IteneraryService {
         return this.toursname;
     }
 
-   public setDestination(des) {
-        window.localStorage.setItem('des', des);
-        this.destination=des;
-    }
-
-     public getDestination() {
-        var des = window.localStorage.getItem('des');
-        this.destination=des;
-        return this.destination;
-    }
+   
 
     public setAttraction(att) {
         window.localStorage.setItem('att', att);
@@ -162,5 +184,35 @@ export class IteneraryService {
         return this.roomservice;
     }
 
+    getObjectLocation(){
+        var oLoc = JSON.parse(window.localStorage.getItem('oLoc'));
+        this.locations=oLoc;
+        return this.locations;
+  
+    }
+
+
+     searchObjctLocation() {
+        var headers = new Headers();
+        let locationName = this.getDestination();
+        if(locationName != "Selected Destination"){
+        let token = this.auth.AuthToken;
+        console.log(token);
+        headers.append('Authorization', 'Bearer ' +token);
+        var url = 'http://cloud.basajans.com:8868/tripplannerdev/api/cities?id='+encodeURI(locationName); 
+        this.http.get(url, {headers : headers}).map(res => res).subscribe(data=>{
+            console.log(data['_body']);
+            this.locations = data['_body'];
+            window.localStorage.setItem('oLoc',this.locations);
+
+        },err => {
+                    console.log(err);
+                },
+                () => console.log('location Search Complete')
+            ); 
+            
+        }
+
+    }
 
 }
