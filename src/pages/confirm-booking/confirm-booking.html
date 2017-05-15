@@ -1,9 +1,7 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Summary</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -64,8 +62,8 @@
     </ion-col>
   </ion-row>
 <ion-row *ngFor="let tra of TransportationSum">
-  <ion-col>
-      <h4>{{tra.TransportationType}} {{tra.TransportationCapacity}} Seater</h4>
+  <ion-col *ngIf="tra.TransportationType != null">
+      <h4>{{tra.VehicleQty}} {{tra.TransportationType}}, {{tra.TransportationCapacity}} Seater</h4>
       <h4>Services : {{tra.TransportationService}}</h4>
   </ion-col>
 </ion-row>

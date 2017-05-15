@@ -109,13 +109,11 @@ export class IteneraryService {
         this.toursname=name;
     }
 
-     public getToursName() {
+    public getToursName() {
         var name = window.localStorage.getItem('tName');
         this.toursname=name;
         return this.toursname;
     }
-
-   
 
     public setAttraction(att) {
         window.localStorage.setItem('att', att);

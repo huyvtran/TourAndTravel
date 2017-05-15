@@ -14,5 +14,16 @@ page-hotel-roomtype {
     color: #f9f7f7;
     }
 
-    
+    ion-card img {
+        display: block;
+        width: 155px;
+        height: 120px;
+    }
+
+   ion-col[width-60] {
+    -webkit-flex: 0 0 60%;
+    -ms-flex: 0 0 60%;
+    flex: 0 0 60%;
+    max-width: 60%;
+    }
 }

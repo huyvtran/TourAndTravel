@@ -46,6 +46,15 @@ export class AcomodationService {
         this.facilities = fac;
     }
 
+
+   delStorFilHot(){
+            localStorage.removeItem('ratHot');
+            localStorage.removeItem('arHot');
+            localStorage.removeItem('locHot');
+            localStorage.removeItem('tyHot');
+            localStorage.removeItem('facHot');
+  }
+
     //List Acomodation by Destination
     searchListAcomodation() {
         var headers = new Headers();

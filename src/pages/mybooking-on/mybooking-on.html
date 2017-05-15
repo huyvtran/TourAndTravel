@@ -16,7 +16,7 @@
 </ion-header>
 <ion-content padding>
 
-<ion-card *ngFor="let his of HistoryBookingOpen">
+<ion-card *ngFor="let his of HistoryBookingOpen" (click)="detailTourTapped($event, his?.Id)" >
   <ion-row>
     <ion-col>
       <h2>{{his?.Title}}</h2>

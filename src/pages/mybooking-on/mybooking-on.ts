@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HistoryService} from '../../providers/history-service';
-
+import {TourDetailsPage } from '../tour-details/tour-details';
 /*
   Generated class for the MybookingOn page.
 
@@ -31,6 +31,10 @@ export class MybookingOnPage {
                 },
                 () => console.log('Get History Transaction Complete')
             );
+  }
+
+  detailTourTapped(event, id){
+    this.navCtrl.push(TourDetailsPage, id);
   }
 
 }

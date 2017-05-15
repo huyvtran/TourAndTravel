@@ -67,6 +67,7 @@ getItems(searchbar) {
     }
 
      filtertransTapped(event) {
+       this.tra.delStorFilTra();
        this.navCtrl.pop();
        this.navCtrl.push(FilterTransport2Page);
   }

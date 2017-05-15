@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import {IteneraryService} from '../../providers/itenerary-service';
-import {IteneraryBuilderPage} from '../itenerary-builder/itenerary-builder';
+//import {IteneraryBuilderPage} from '../itenerary-builder/itenerary-builder';
 
 /*
   Generated class for the InputTravellers page.
@@ -43,7 +43,7 @@ export class InputTravellersPage {
       var data = JSON.stringify({guestTour});
       this.ite.setPassenger(data);
       this.navCtrl.pop();
-      this.navCtrl.push(IteneraryBuilderPage);
+      //this.navCtrl.push(IteneraryBuilderPage);
       }
   }
 

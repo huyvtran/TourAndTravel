@@ -80,7 +80,7 @@ export class ListHotelPage {
 
 
   filterhotelTapped(event) {
-    //this.navCtrl.push(FilterHotelPage);
+    this.aco.delStorFilHot();
     this.navCtrl.pop();
     this.navCtrl.push(FilterHotel2Page);
   }

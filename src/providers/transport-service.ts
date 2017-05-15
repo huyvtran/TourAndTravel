@@ -28,6 +28,11 @@ export class TransportService {
         this.seats = se;
     }
 
+  delStorFilTra(){
+            localStorage.removeItem('ratTrans');
+            localStorage.removeItem('seTrans');
+            localStorage.removeItem('tyTrans');
+  }
 
     listTransportFilter() {
         var headers = new Headers();

@@ -37,6 +37,7 @@ import { FilterHotel2Page   } from '../pages/filter-hotel2/filter-hotel2';
 
 //result
 import {ConfirmBookingPage} from '../pages/confirm-booking/confirm-booking';
+import {TourDetailsPage} from '../pages/tour-details/tour-details';
 //component
 import { LocationPopoverComponent} from '../components/location-popover/location-popover';
 //Coba-coba
@@ -98,6 +99,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
     //result
     ConfirmBookingPage,
+    TourDetailsPage,
     //component
     LocationPopoverComponent,
 
@@ -146,6 +148,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
     //result
     ConfirmBookingPage,
+    TourDetailsPage,
 
     //component
     LocationPopoverComponent,

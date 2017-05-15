@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,AlertController } from 'ionic-angular';
 import {CustomePackagePage} from '../custome-package/custome-package';
 import {TransactionService} from '../../providers/transaction-service';
 /*
@@ -19,7 +19,7 @@ export class ConfirmBookingPage {
   AttractionSum: Array<any>;
   TourPriceSum: Array<any>;
   curency;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public transaction : TransactionService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public transaction : TransactionService, public alertCtrl : AlertController) {
   this.BookingDetailSum= null;
   this.AccommodationSum= null;
   this.TransportationSum= null;
@@ -46,9 +46,49 @@ export class ConfirmBookingPage {
   }
 
   confirmTapped(event) {
-    this.transaction.getTourTransaksi().subscribe(data=>{console.log(data);} ,err =>{console.log(err);}, ()=> console.log('post Transaction Complete')
-    );
-    this.navCtrl.setRoot(CustomePackagePage);
+    this.allertConfirmBooking();
   }
 
+
+  allertConfirmBooking() {
+    let prompt = this.alertCtrl.create({
+      title: 'Confirm Booking',
+      message: "Do you agree with this booking?",
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: ()=> {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'OK',
+          handler: () => {
+            this.transaction.getTourTransaksi().subscribe(data=>{console.log(data);} ,err =>{console.log(err);}, ()=> console.log('post Transaction Complete'));
+            console.log('Saved clicked');
+            this.alertSuccess();
+            
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
+
+
+alertSuccess() {
+    let alert = this.alertCtrl.create({
+      title: 'Booking Saved',
+      subTitle: 'Your Booking has been saved in Sistem',
+      buttons: [{
+          text: 'OK',
+          handler: ()=> {
+            this.navCtrl.setRoot(CustomePackagePage);
+            console.log('Saved clicked');
+          }
+        }]
+    });
+    alert.present();
+  }
 }
