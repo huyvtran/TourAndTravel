@@ -30,6 +30,7 @@ export class LoginPage {
                     this.loading.dismiss();
                     this.nav.setRoot(HomePage);
                     this.auth.getUserInfo();
+                    this.menu.enable(true);
                     //this.myApp.menuOpened();
                     
                 });

@@ -66,18 +66,19 @@ export class IteneraryBuilderPage {
     }
 
     if (att != null) {
-      this.attraction = att.attrac.Name;
+        //let n = att.attrac.length;
+        this.attraction = att.attrac
     }
     if (tourName != null) {
       this.toursname = tourName;
     }
     if (transportName != null) {
       if(this.ite.getTransportSer()==null) this.tranportation = transportName.trans.Name;
-      else this.tranportation = transportName.trans.Name+', ' +this.ite.getTransportSer().itemser;
+      else this.tranportation = transportName.trans.Name+', '+transportName.trans.TransportationSeatTypeName+' Seater, ' +this.ite.getTransportSer().itemser;
     }
     if (acomodationName != null) {
       if(this.ite.getRoomSer()==null) this.acomodation = acomodationName.hot.Name;
-      else this.acomodation = acomodationName.hot.Name+', '+this.ite.getRoomSer().itemser;
+      else this.acomodation = acomodationName.hot.Name+', '+this.ite.getRoomType().itemroom.AccommodationItemTypeName+', '+this.ite.getRoomSer().itemser;
     }
     if (passengerTotal != null) {
       var adult = passengerTotal.guestTour['AdultQty'];

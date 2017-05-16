@@ -10,7 +10,7 @@ import { IteneraryService } from '../../providers/itenerary-service';
 export class ListAttractionPage {
   listattractions: Array<any>;
   attractions: Array<any>;
-  checkItems: Array<any>;
+  selectedQuestions:string[] = [];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -57,20 +57,33 @@ export class ListAttractionPage {
 
   }
 
-  setSelectedAttraction(attrac) {
-    console.log(attrac);
-    var data = JSON.stringify({ attrac });
-    console.log(data);
-    this.ite.setAttraction(data);
-    this.navCtrl.pop();
-  }
+  // setSelectedAttraction(attrac) {
+  //   console.log(attrac);
+  //   var data = JSON.stringify({ attrac });
+  //   console.log(data);
+  //   this.ite.setAttraction(data);
+  //   this.navCtrl.pop();
+  // }
 
 
-  printf(event, attrac) {
-    console.log(event);
-    console.log(attrac);
-    console.log(this.checkItems);
+  printf2(attrac){
+    const foundAt = this.selectedQuestions.indexOf(attrac);
+     if (foundAt >= 0) {
+        this.selectedQuestions.splice(foundAt, 1);
+     } else {
+        this.selectedQuestions.push(attrac);
+    }
+    console.log(this.selectedQuestions);
   }
+
+    setSelectedAttraction() {
+        console.log(this.selectedQuestions);
+        let attrac = this.selectedQuestions;
+        var data = JSON.stringify({ attrac });
+        console.log(data);
+        this.ite.setAttraction(data);
+        this.navCtrl.pop();
+    }
 
 
 }

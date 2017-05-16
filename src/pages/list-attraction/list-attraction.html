@@ -17,8 +17,8 @@
 <h5>Show Result in Destination</h5>
 
 
-<ion-card *ngFor="let attrac of attractions" (click)="setSelectedAttraction(attrac)">
-<!--<ion-card *ngFor="let attrac of attractions">-->
+<!--<ion-card *ngFor="let attrac of attractions" (click)="setSelectedAttraction(attrac)">-->
+<ion-card *ngFor="let attrac of attractions">
 <ion-row>
   <ion-col><img src="{{attrac.ImageUrl}}"/></ion-col>
   <ion-col width-60>
@@ -27,10 +27,15 @@
     <h3>Rating: 5</h3>
     <p style=" white-space: pre-wrap;">Address: {{attrac.Address}}</p>
     <br>
-    <!--<ion-checkbox (click)="printf($event, attrac)"></ion-checkbox>-->
+    <ion-checkbox (ionChange)="printf2(attrac)"></ion-checkbox>
     </div></ion-col>
 </ion-row>
 </ion-card>
 
 
 </ion-content>
+
+
+<ion-footer>
+    <button ion-button style="margin-top: 0px;margin-bottom: 0px;" (click)="setSelectedAttraction()" full large >Done</button>
+</ion-footer>

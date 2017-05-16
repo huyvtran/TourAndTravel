@@ -24,7 +24,7 @@
        <h4>Twin/Double Room</h4>
     </ion-col>
      <ion-col col-2>
-       <ion-input type="tel" style="border:1px solid ;" maxlength="2" name="sharingRooms" [value]="allocRoom.sharingRooms" [(ngModel)]="allocRoom.sharingRooms"></ion-input>
+       <ion-input (input)="guestRemaining(allocRoom)"  type="tel" style="border:1px solid ;" maxlength="2" name="sharingRooms" [value]="allocRoom.sharingRooms" [(ngModel)]="allocRoom.sharingRooms"></ion-input>
     </ion-col>
     <ion-col col-2>
     </ion-col>
@@ -37,7 +37,7 @@
        <h4>Single Room</h4>
     </ion-col>
      <ion-col col-2>
-       <ion-input type="tel" style="border:1px solid ;" maxlength="2" name="singleRoom" [value]="allocRoom.singleRoom" [(ngModel)]="allocRoom.singleRoom"></ion-input>
+       <ion-input (input)="guestRemaining(allocRoom)"  type="tel" style="border:1px solid ;" maxlength="2" name="singleRoom" [value]="allocRoom.singleRoom" [(ngModel)]="allocRoom.singleRoom"></ion-input>
     </ion-col>
     <ion-col col-2>
     </ion-col>
@@ -50,7 +50,7 @@
        <h4>Extra Bed</h4>
     </ion-col>
      <ion-col col-2>
-       <ion-input type="tel" style="border:1px solid ;" maxlength="2"  name="extraBed" [value]="allocRoom.extraBed" [(ngModel)]="allocRoom.extraBed"></ion-input>
+       <ion-input (input)="guestRemaining(allocRoom)"  type="tel" style="border:1px solid ;" maxlength="2"  name="extraBed" [value]="allocRoom.extraBed" [(ngModel)]="allocRoom.extraBed"></ion-input>
     </ion-col>
     <ion-col col-2>
     </ion-col>
@@ -63,11 +63,25 @@
        <h4>Sharing Bed with Parents</h4>
     </ion-col>
      <ion-col col-2>
-       <ion-input type="tel" style="border:1px solid ;" maxlength="2"  name="sharingBed" [value]="allocRoom.sharingBed" [(ngModel)]="allocRoom.sharingBed"></ion-input>
+       <ion-input (input)="guestRemaining(allocRoom)"  type="tel" style="border:1px solid ;" maxlength="2"  name="sharingBed" [value]="allocRoom.sharingBed" [(ngModel)]="allocRoom.sharingBed"></ion-input>
     </ion-col>
     <ion-col col-2>
     </ion-col>
   </ion-row>
+
+  <ion-row>
+  <ion-col col-2>
+    </ion-col>
+     <ion-col col-5>
+       <h4>Total Guest:</h4>
+    </ion-col>
+     <ion-col col-2>
+       <ion-input disable type="text" [(ngModel)]="totalGuest"></ion-input>
+    </ion-col>
+    <ion-col col-2>
+    </ion-col>
+  </ion-row>
+
 </ion-grid>
 </ion-content>
 

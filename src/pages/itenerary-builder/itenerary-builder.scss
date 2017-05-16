@@ -32,6 +32,18 @@ page-itenerary-builder {
 }
 
 
+.label-md {
+    margin: 13px 8px 13px 8px;
+    color: black;
+    font-size: large;
+}
+
+
+.item-md.item-block .item-inner {
+    padding-right: 8px;
+    border-bottom: 1px solid gray;
+}
+
     ion-input, ion-textarea {
         border-bottom: 1px solid gray;
     }

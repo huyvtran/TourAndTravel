@@ -80,7 +80,7 @@ export class TransactionService {
   }
 
   dataStorage(){
-       var att = this.ite.getAttraction();
+    var att = this.ite.getAttraction();
     var trans = this.ite.getTransport();
     var acomo = this.ite.getAcomodation();
     if (att == null) this.attraction = [];
