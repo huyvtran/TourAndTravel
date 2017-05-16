@@ -66,7 +66,7 @@
     <ion-row>
       <ion-col>
         <ion-label stacked> <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle"></ion-icon> Attraction Package</ion-label>
-        <ion-item (click)="attractionTapped($event)" style="padding-left: 0px"><span *ngFor="let attrac of attraction ;let i = index">{{attrac.Name}}<span *ngIf="attraction.length > 1 && i  != attraction.length - 1 "> ,</span></span></ion-item>
+        <ion-item (click)="attractionTapped($event)" style="padding-left: 0px"><span *ngFor="let attrac of attraction ;let i = index">{{attrac.Name}}<span *ngIf="attraction.length > 1 && i  != attraction.length - 1 ">, </span></span></ion-item>
         <!--<ion-input type="text" disabled="true" [(ngModel)]="attraction" aria-placeholder="attraction" (click)="attractionTapped($event)"></ion-input>-->
       </ion-col>
     </ion-row>
